@@ -1,0 +1,48 @@
+body{
+    font-family: calibri;
+    margin: 0;
+}
+
+.title_bar_logo{
+    background-color: rgb(32, 32, 32);
+    margin: 0px;
+    padding: 2px;
+    float: left;
+}
+
+.title_bar{
+    list-style: none;
+    background-color: rgb(32, 32, 32);
+    height: 1cm;
+    margin: 0;
+    padding: 20px 70px 10px 70px;
+}
+
+.title_bar li{
+    display: inline;
+    text-align: center;
+    padding: 14px 0px 14px 0px;
+    border: 1px green solid;
+    margin: 0;
+}
+
+a.sections{
+    text-decoration: none;
+    color: rgb(236, 236, 236);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 25px 10px;
+}
+
+a.sections:hover{
+    background-color: rgba(97, 97, 97, 0.678);
+    color: rgb(53, 198, 255);
+}
+
+a img{
+    float: left;
+    margin: 0px;
+    padding: 13px 30px;
+    height: 35px;
+    border: 1px green solid;
+}
