@@ -14,7 +14,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -34,20 +35,48 @@
       padding: 15px;
       margin: auto;
     }
+
+    .borde0 {
+      border: 0.5px solid rgb(189, 189, 189);
+      height: 40px;
+    }
+
+    .redondeoSuperior {
+      border-radius: 5px;
+    }
+
+    .redondeoInferior {
+      border-radius: 5px;
+    }
+
+    .espaciado {
+      padding: 10px;
+      margin-top: 15px;
+    }
+
+    img {
+      margin: 0px 0px 20px 0px;
+      padding: 0px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="container p-5 signin">
+    <div class="alert alert-danger estiloAlerta" role="alert" style="position: relative; width:auto; top: 0;">
+      <img src="img/login.png" alt="Imagen de login" class="btn-block">
+      <form action="">
+        <input type="text" id="inputEmail" placeholder="Email" class="btn-block borde0 redondeoSuperior">
+        <input type="password" placeholder="Contraseña" class="btn-block borde0 redondeoInferior">
+        <button class="espaciado btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+      </form>
     </div>
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
