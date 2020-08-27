@@ -15,6 +15,7 @@ function validar(){
     console.log(correo.value);
     if(correo.value.length != 0 && contraseña.value.length != 0){
         console.log("Sale si el validar");
+        localStorage.setItem('user', correo.value);
         redirect();
         // return true;
     }else {
