@@ -29,41 +29,67 @@
       <h2 style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Productos</h2>
       <p class="lead">Verás aquí todos los productos del sitio.</p>
     </div>
+          <!-- Seccion que trajo por defecto y se ve lindo -->
+    <div class="container p-0">
+      
+      <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+        <div class="col-3 p-0 d-md-inline-block">
+          <div class="btn-group" role="group">
+            <input class="btn btn-light" type="search" id="buscador" placeholder="que estas buscando?" value="" size="18">
+            <button class="btn btn-light btn-block"><i class="fas fa-search"></i> Buscar
+          </div>
+        </div>
+        <!-- <h4 class="alert-heading">¡A trabajar! :)</h4>
+        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
+        <hr>
+        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
+      </div>
+      <!-- Termina lo por defecto y empieza la parte que yo le pongo mi codigo -->
+      <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
 
-    <div class="container" style="margin: 0px 90px;">
-
-      <div class="col text-left" style="display:inline-flex; padding: 0px;">
-        <span style="padding-right: 20px; padding-top: 6px;"> Ordenar por: </span>
         
-        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
 
-          <label class="btn btn-light" id="sortAsc" >
-            <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i> Precio
-          </label>
+        <label class="btn btn-light" id="sortAsc" style="width: 160px;">
+          <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i> Precio
+        </label>
 
-          <label class="btn btn-light" id="sortDesc" >
-            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i> Precio
-          </label>
+        <label class="btn btn-light" id="sortDesc" style="width: 160px;">
+          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i> Precio
+        </label>
 
-          <label class="btn btn-light" id="sortByCount" style="display: inline-block;">
-            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Relevancia
-          </label>
+        <label class="btn btn-light" id="sortByCount" style="width: 200px;"> 
+          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Relevancia
+        </label>
 
-        </div>
-
-        <span style="margin-left: 30px; font-size: 24px;">|</span>
-
-        <div class="container" style="width: auto; max-height: 50px; padding-top: 3px; margin-left: 35px; margin-bottom: 2vw;" maxlength="6">
-          Rango de precio:
-          <input class="flex-md-row" type="number" placeholder="min" style="width: 80px; height: 30px; box-sizing: border-box;">
-          <input class="flex-md-row" type="number" placeholder="max" maxlength="6" size="7" style="width: 80px; height: 30px; box-sizing: border-box;">
-        </div>
-
-        <div>
-          <input type="search" id="buscador" placeholder="buscar" value="" style="display: inline;">
-        </div>
+        <!-- <div class="row container p-0 m-0"> -->
+          <div class="col" style="margin-left: 40px;">
+            <p class="font-weight-normal text-right my-2">Cant.</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 100px">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 100px">
+          </div>
+          <div class="col-3 p-0">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        <!-- </div> -->
 
       </div>
+
+      <div class="container p-0">
+        
+      </div>
+
+      <!-- Aqui termina mi codigo nuevo -->
+    </div>
+          <!-- Aqui termina la seccion -->
+    <div class="container" id="p5">
+
     </div>
 
     <footer class="text-muted bg-light">

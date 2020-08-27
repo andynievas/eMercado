@@ -19,10 +19,18 @@
   font-weight: bold;
 }
 
+.tituloDeLaCategoria{
+  font-size: 36px;
+}
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+
+  .tituloDeLaCategoria{
+    font-size: 26px;
   }
 }
 
