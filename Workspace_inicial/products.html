@@ -19,8 +19,8 @@
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block btn fonditoo" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block btn fonditoo" href="categories.html">Categorías</a>
+        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block btn fonditoo" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block btn fonditoo" href="cart.html">Mi carrito</a>
         <a class="py-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
@@ -34,10 +34,12 @@
     <div class="container p-0">
       
       <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <div class="col-3 p-0 d-md-inline-block">
-          <div class="btn-group" role="group">
-            <input class="btn btn-light" type="search" id="buscador" placeholder="que estas buscando?" value="" size="18">
-            <button class="btn btn-light btn-block"><i class="fas fa-search"></i> Buscar
+        <div class="p-0" style="width: 100%;">
+          <div class="btn-group" role="group" style="width: 100%;">
+            
+            <input class="btn btn-light" type="search" id="buscador" placeholder="que estas buscando?" value="" size="18" style="width: 400px; margin-left: 6vw">
+            <button class="btn btn-light" style="margin-right: 6vw;"><i class="fas fa-search"></i> Buscar
+            
           </div>
         </div>
         <!-- <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -47,8 +49,6 @@
       </div>
       <!-- Termina lo por defecto y empieza la parte que yo le pongo mi codigo -->
       <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-
-        
 
         <label class="btn btn-light" id="sortAsc" style="width: 160px;">
           <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i> Precio
