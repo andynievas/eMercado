@@ -5,6 +5,11 @@ var currentSortCriteria = undefined;
 
 var minCount = undefined;
 var maxCount = undefined;
+var varParaBuscar = '';
+var arrayParaBuscar = [];
+
+var textBox = document.getElementById('buscador');
+textBox.value = '';
 
 function showProductsList(){
 
@@ -35,6 +40,9 @@ function showProductsList(){
             `
         }
 
+        arrayParaBuscar[i] = product.name;
+        arrayParaBuscar[i] += '. ';
+        arrayParaBuscar[i] += product.description;
     }
     
     arrayTags_P5[2].innerHTML = htmlContentToAppend;
@@ -163,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             ShowProducts(resultObj.data);
+            filtrarPorTecleo();
         }
 
     });
@@ -214,3 +223,49 @@ document.getElementById("rangeFilterCount").addEventListener("click", function()
 
     showProductsList();
 });
+
+// Desafiate (Entrega 2) //  Buscador que muestra el resultado con cada letra que se oprime
+
+//  Funcion que devuelve un array con unicamente el nombre y la descripcion de los articulos (para comparar)
+function generarArrayFiltrado(){
+    
+    var arrayFiltrado = [];
+
+    for(let j=0; j<deRepuestoCurrentProductsArray.length; j++){
+    
+        arrayFiltrado[j] = deRepuestoCurrentProductsArray[j].name + '. ' + deRepuestoCurrentProductsArray[j].description;
+    }
+
+    return arrayFiltrado;
+
+}
+
+function filtrarPorTecleo(){
+    var h = 0;
+    var arrayFiltrado = generarArrayFiltrado();
+    currentProductsArray = [];
+        
+        for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
+
+            if( arrayFiltrado[i].includes(textBox.value) ){  // Si se encuentra la busqueda se actualiza el array
+                currentProductsArray[h] = deRepuestoCurrentProductsArray[i]; // Actualizo el array global
+                h++;
+            }
+        }
+
+}
+    
+    var nombre = "";
+    
+    textBox.addEventListener('keyup', function(){
+
+        if( event.key !== 'Backspace' && event.key !== 'Enter'){
+            nombre += event.key;
+        }else if(event.key == 'Backspace'){
+            nombre = nombre.slice(0, nombre.length-1);
+        }
+        
+        filtrarPorTecleo();
+        ShowProducts();
+        
+    });
