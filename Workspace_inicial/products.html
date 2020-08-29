@@ -26,20 +26,22 @@
         <a class="py-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
       </div>
     </nav>
-    <div class="text-center p-4">
+    <div class="text-center p-0 pt-2">
       <h2 style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Productos</h2>
-      <p class="lead">Verás aquí todos los productos del sitio.</p>
+      <p class="lead" style="margin-bottom: 0px;">Verás aquí todos los productos del sitio.</p>
     </div>
-          <!-- Seccion que trajo por defecto y se ve lindo -->
-    <div class="container p-0">
+          <!-- Aqui comienza la Seccion que trajo por defecto y se ve lindo -->
+    <div class="container p-2"> <!-- Aqui comienza el contenedor principal -->
       
-      <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+      <div class="p-2 mb-2 alert-danger" role="alert" style="border-radius: 10px;">
         <div class="p-0" style="width: 100%;">
+          
           <div class="btn-group" role="group" style="width: 100%;">
-            
-            <input class="btn btn-light" type="search" id="buscador" placeholder="Buscar en Productos" value="" size="18" style="width: 400px; margin-left: 6vw">
-            <button class="btn btn-light" style="margin-right: 6vw;"><i class="fas fa-search"></i> Buscar
-            
+            <label for="buscador" style="width: 10vw"></label>
+            <input class="btn btn-light" type="search" id="buscador" placeholder="Buscar en Productos" value="" size="18" style="width: 400px; border-radius: 10px;">
+            <label for="buscador" style="width: 10vw"></label>
+
+            <!-- <button class="btn btn-light" style="margin-right: 6vw; border-radius: 10px;"><i class="fas fa-search"></i> Buscar -->
           </div>
         </div>
         <!-- <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -47,8 +49,8 @@
         <hr>
         <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
       </div>
-      <!-- Termina lo por defecto y empieza la parte que yo le pongo mi codigo -->
-      <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+      <!-- Termina la Seccion por defecto y empieza la parte que yo le pongo mi codigo -->
+      <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
 
         <label class="btn btn-light" id="sortAsc" style="width: 160px;">
           <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i> Precio
@@ -62,6 +64,31 @@
           <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Relevancia
         </label>
 
+      </div>
+
+      <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
+
+        <div class="col">
+          <p class="font-weight-normal text-right my-2">Rango $.</p>
+          </div> <!-- comente esto con nombreclave (jotaJO) -->
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 100px">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 100px">
+          </div>
+          <div class="col-3 p-0">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        <!-- </div> equivale a este nombreclave (jotaJO) -->
+
+      </div>
+
+          
+        <!-- Esto es un comentario 
         <div class="container p-0 m-0">
           <div class="col" style="margin-left: 40px;">
             <p class="font-weight-normal text-right my-2">Cant.</p>
@@ -78,20 +105,13 @@
               <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
-        </div> <!-- Esto es un comentario -->
+        </div>  Esto es un comentario -->
 
+      <div class="container p-0 m-0"> <!-- Cuarto div con clase="container" -->
+        <span>hola</span>
       </div>
 
-      <div class="container p-0">
-        
-      </div>
-
-      <!-- Aqui termina mi codigo nuevo -->
-    </div>
-          <!-- Aqui termina la seccion -->
-    <div class="container" id="p5">
-
-    </div>
+    </div> <!-- Aqui termina el contenedor principal -->
 
     <footer class="text-muted bg-light">
       <div class="container">
