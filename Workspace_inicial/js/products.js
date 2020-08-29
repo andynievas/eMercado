@@ -247,12 +247,12 @@ function generarArrayFiltrado(){
 
 function filtrarPorTecleo(){
     var h = 0;
-    var arrayFiltrado = generarArrayFiltrado(); console.log(arrayFiltrado);
+    var arrayFiltrado = generarArrayFiltrado();
     currentProductsArray = [];
         
         for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
 
-            if( arrayFiltrado[i].includes(textBox.value) ){  // Si se encuentra la busqueda se actualiza el array
+            if( arrayFiltrado[i].includes(textBox.value.toLowerCase() ) ){  // Si se encuentra la busqueda se actualiza el array
                 currentProductsArray[h] = deRepuestoCurrentProductsArray[i]; // Actualizo el array global
                 h++;
             }
