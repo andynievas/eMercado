@@ -235,7 +235,7 @@ function generarArrayFiltrado(){
     
         arrayFiltrado[j] = deRepuestoCurrentProductsArray[j].name + '. ' + deRepuestoCurrentProductsArray[j].description;
     }
-    console.log(arrayFiltrado[0]);
+    console.log(arrayFiltrado[0].toLowerCase() );
 
     return arrayFiltrado;
     /*
