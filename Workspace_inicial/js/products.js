@@ -235,19 +235,19 @@ function generarArrayFiltrado(){
     
         arrayFiltrado[j] = deRepuestoCurrentProductsArray[j].name + '. ' + deRepuestoCurrentProductsArray[j].description;
     }
-    console.log(arrayFiltrado[0].toLowerCase() );
-
-    return arrayFiltrado;
-    /*
+    //console.log(arrayFiltrado[0].toLowerCase() );
+    
     for(let i=0; i<arrayFiltrado.length; i++){
-        arrayFiltrado[i].toLowerCase();
-    }*/
+        arrayFiltrado[i] = arrayFiltrado[i].toLowerCase();
+    }
+    
+    return arrayFiltrado;
 
 }
 
 function filtrarPorTecleo(){
     var h = 0;
-    var arrayFiltrado = generarArrayFiltrado();
+    var arrayFiltrado = generarArrayFiltrado(); console.log(arrayFiltrado);
     currentProductsArray = [];
         
         for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
