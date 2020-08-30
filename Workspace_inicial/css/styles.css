@@ -163,3 +163,13 @@ a.custom-card:hover {
 .fondoSession{
   background-color: rgba(236, 69, 91, 0.877);
 }
+
+#logOut{
+  display: none;
+}
+
+#logOut.cerrarSessionn{
+  
+  display: block;
+}
+

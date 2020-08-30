@@ -45,7 +45,7 @@ function showProductsList(){
         arrayParaBuscar[i] += product.description;
     }
     
-    arrayTags_P5[2].innerHTML = htmlContentToAppend;
+    arrayTags_P5[3].innerHTML = htmlContentToAppend;
 }
 
 function ordenarByPrecioAsc(array){

@@ -18,13 +18,17 @@
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
+        <a class="p-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
       </div>
+      <div class="container">
+        <a href="#" id="logOut" class="" style="text-align: right; margin-right: 20px;">Cerrar sesión</a>
+      </div>
+
     </nav>
     <div class="text-center p-0 pt-2">
       <h2 style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Productos</h2>
@@ -52,15 +56,15 @@
       <!-- Termina la Seccion por defecto y empieza la parte que yo le pongo mi codigo -->
       <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
 
-        <label class="btn btn-light" id="sortAsc" style="width: 160px;">
+        <label class="btn btn-light" id="sortAsc" style="width: 27.5vw; max-width: 160px;">
           <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i> Precio
         </label>
 
-        <label class="btn btn-light" id="sortDesc" style="width: 160px;">
+        <label class="btn btn-light" id="sortDesc" style="width: 27.5vw; max-width: 160px;">
           <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i> Precio
         </label>
 
-        <label class="btn btn-light" id="sortByCount" style="width: 200px;"> 
+        <label class="btn btn-light" id="sortByCount" style="width: 36vw; max-width: 200px;"> 
           <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Relevancia
         </label>
 
@@ -69,22 +73,31 @@
       <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
 
         <div class="col">
-          <p class="font-weight-normal text-right my-2">Rango $.</p>
-          </div> <!-- comente esto con nombreclave (jotaJO) -->
+          <p class="font-weight-normal text-right my-2" style="width: 70px;">Rango $.</p>
+        </div> <!-- comente esto con nombreclave (jotaJO) -->
           <div class="col">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 100px">
           </div>
           <div class="col">
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 100px">
           </div>
-          <div class="col-3 p-0">
+          <!-- <div class="col p-0">
             <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-light" id="rangeFilterCount">Filtrar</button>
               <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
-          </div>
-        <!-- </div> equivale a este nombreclave (jotaJO) -->
+          </div> -->
+          <!-- </div> equivale a este nombreclave (jotaJO) -->
 
+      </div>
+
+      <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
+        <div class="col p-0">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+          </div>
+        </div>
       </div>
 
           
