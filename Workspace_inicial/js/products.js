@@ -5,18 +5,11 @@ var currentSortCriteria = undefined;
 
 var minCount = undefined;
 var maxCount = undefined;
+var varParaBuscar = '';
+var arrayParaBuscar = [];
 
-function borrarElementos(){
-
-    for(let i=0; i<4; i++){
-
-        var aBorrar = document.getElementById("borrame"+i);
-
-        padreDeBorrar = aBorrar.parentNode;
-        padreDeBorrar.removeChild(aBorrar);
-    }
-
-}
+var textBox = document.getElementById('buscador');
+textBox.value = '';
 
 function showProductsList(){
 
@@ -25,8 +18,8 @@ function showProductsList(){
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(product.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.productCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action" id="borrame`+i+`">
@@ -47,9 +40,12 @@ function showProductsList(){
             `
         }
 
+        arrayParaBuscar[i] = product.name;
+        arrayParaBuscar[i] += '. ';
+        arrayParaBuscar[i] += product.description;
     }
     
-    arrayTags_P5[2].innerHTML = htmlContentToAppend;
+    arrayTags_P5[3].innerHTML = htmlContentToAppend;
 }
 
 function ordenarByPrecioAsc(array){
@@ -175,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             ShowProducts(resultObj.data);
+            filtrarPorTecleo();
         }
 
     });
@@ -193,3 +190,87 @@ document.getElementById("sortByCount").addEventListener("click", function(){
     sortAndShowProducts("by_relevancia");
 
 });
+
+document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("rangeFilterCountMin").value = "";
+    document.getElementById("rangeFilterCountMax").value = "";
+
+    minCount = undefined;
+    maxCount = undefined;
+
+    showProductsList();
+});
+
+document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    //de productos por categoría.
+    minCount = document.getElementById("rangeFilterCountMin").value;
+    maxCount = document.getElementById("rangeFilterCountMax").value;
+
+    if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        minCount = parseInt(minCount);
+    }
+    else{
+        minCount = undefined;
+    }
+
+    if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        maxCount = parseInt(maxCount);
+    }
+    else{
+        maxCount = undefined;
+    }
+
+    showProductsList();
+});
+
+// Desafiate (Entrega 2) //  Buscador que muestra el resultado con cada letra que se oprime
+
+//  Funcion que devuelve un array con unicamente el nombre y la descripcion de los articulos (para comparar)
+function generarArrayFiltrado(){
+    
+    var arrayFiltrado = [];
+
+    for(let j=0; j<deRepuestoCurrentProductsArray.length; j++){
+    
+        arrayFiltrado[j] = deRepuestoCurrentProductsArray[j].name + '. ' + deRepuestoCurrentProductsArray[j].description;
+    }
+    //console.log(arrayFiltrado[0].toLowerCase() );
+    
+    for(let i=0; i<arrayFiltrado.length; i++){
+        arrayFiltrado[i] = arrayFiltrado[i].toLowerCase();
+    }
+    
+    return arrayFiltrado;
+
+}
+
+function filtrarPorTecleo(){
+    var h = 0;
+    var arrayFiltrado = generarArrayFiltrado();
+    currentProductsArray = [];
+        
+        for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
+
+            if( arrayFiltrado[i].includes(textBox.value.toLowerCase() ) ){  // Si se encuentra la busqueda se actualiza el array
+                currentProductsArray[h] = deRepuestoCurrentProductsArray[i]; // Actualizo el array global
+                h++;
+            }
+        }
+
+}
+    
+    var nombre = "";
+    
+    textBox.addEventListener('keyup', function(){
+
+        if( event.key !== 'Backspace' && event.key !== 'Enter'){
+            nombre += event.key;
+        }else if(event.key == 'Backspace'){
+            nombre = nombre.slice(0, nombre.length-1);
+        }
+        
+        filtrarPorTecleo();
+        ShowProducts();
+        
+    });

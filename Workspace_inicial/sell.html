@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en"><head>
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -29,17 +31,24 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-            <a class="py-2 d-none d-md-inline-block" href="login.html" id="userSession">Ingresar</a>
+          <a class="p-2 d-none d-md-inline-block btn fonditoo" href="index.html"><i class="fas fa-home"></i> Inicio</a>
+          <a class="p-2 d-none d-md-inline-block btn fonditoo" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+          <a class="p-2 d-none d-md-inline-block btn fonditoo" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+          <a class="p-2 d-none d-md-inline-block btn fonditoo" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+          <a class="p-2 d-none d-md-inline-block btn fonditoo" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
+          <a class="p-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
         </div>
+
+        <div class="container">
+          <a href="#" id="logOut" class="" style="text-align: right; margin-right: 20px;">Cerrar sesión</a>
+        </div>
+
     </nav>
       <div class="container">
         <div class="text-center p-4">

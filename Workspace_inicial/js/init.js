@@ -47,14 +47,15 @@ document.addEventListener("DOMContentLoaded", function(e){
   var currentUser = document.getElementById("userSession");
   var finalUser = localStorage.getItem('user');
 
-  // var string = "foo",
-  // substring = "oo";
-
   if(finalUser !== null){
 
     
     if( finalUser.includes('.com') ){
       finalUser = finalUser.slice(0,finalUser.length-4) ;
+    }
+
+    if(finalUser.length >= 15){
+      finalUser = finalUser.slice(0, 8) + '...' + finalUser.slice(finalUser.length-6, finalUser.length);
     }
   
     if( localStorage.getItem('user')!=null ){
@@ -66,3 +67,23 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   
 });
+
+var cerrarSession = document.getElementById("logOut");
+var indicadorDeUserName = document.getElementById("userSession");
+
+if(indicadorDeUserName !== null){
+  
+  indicadorDeUserName.addEventListener("click", function(){
+
+    if( cerrarSession.className === 'cerrarSessionn' ){
+      cerrarSession.className = ' ';
+    }else cerrarSession.className = 'cerrarSessionn';
+  
+  });
+
+  cerrarSession.addEventListener("click", function(){
+    localStorage.removeItem("user");
+    location.replace("index.html");
+  });
+
+}
