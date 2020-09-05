@@ -1,8 +1,9 @@
 
 
-function ponerNombre(){
-    htmlContentToAppend += `
-        <div class="container breadcrumb ">
+function ponerNombre(product){
+
+    let htmlContentToAppend = `
+        <div class="">
             <div class="row">
             
                 <div class="col">
@@ -16,6 +17,9 @@ function ponerNombre(){
                 </div>
             </div>
         </div> ` ;
+    
+    document.getElementById("titulo").innerHTML += htmlContentToAppend;
+
 }
 
 function ponerImagenes(product){
@@ -39,25 +43,26 @@ function ponerImagenes(product){
             </div>
         </div>
     </div> ` ;
-    document.getElementsByClassName("container")[1].innerHTML += htmlContentToAppend;
+    document.getElementsByClassName("container")[3].innerHTML += htmlContentToAppend;
 }
 
 function showProductInfo(product){
 
+    ponerNombre(product);
     ponerImagenes(product);
 
     let carrucel ="";
 
     carrucel = `
     
-    <div class="container">
+    <div class="container" style="width: 80%">
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item ">
                     <img class="d-block w-100" src=" ` + product.images[0] + ` " alt="First slide">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item active">
                     <img class="d-block w-100" src=" ` + product.images[3] + ` " alt="Second slide">
                 </div>
                 <div class="carousel-item">
@@ -80,9 +85,17 @@ function showProductInfo(product){
             </a>
         </div> 
     
-    </div>`;
+    </div>
+    
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
 
-    document.getElementsByClassName("container")[1].innerHTML += carrucel;
+    `;
+
+    document.getElementsByClassName("container")[3].innerHTML += carrucel;
 
     let htmlContentToAppend = "";
     let arrayTags_P5 = document.getElementsByClassName("container");
