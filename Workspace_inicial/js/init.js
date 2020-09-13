@@ -89,3 +89,11 @@ if(indicadorDeUserName !== null){
   });
 
 }
+
+var icon = document.getElementsByTagName("head");
+
+console.log(icon[0]);
+icon[0].innerHTML += `
+  <link rel="shortcut icon" href="img/icons/10editada.png">
+
+  `; 
