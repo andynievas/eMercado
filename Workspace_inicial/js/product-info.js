@@ -4,6 +4,8 @@ const fondoColor = "rgb(227,245,244)";
 
 var productInfoResult;
 
+var arrayDelNuevoComentario = [];
+
 function setearColorFondo(){
     var largoG = document.getElementsByClassName("cambiarFondo");console.log(largoG);
     document.getElementById("titulo").style = "background-color: " + fondoColor + ";";
@@ -15,18 +17,15 @@ function setearColorFondo(){
 function ponerNombre(product){
 
     let htmlContentToAppend = `
-        <div class="">
+        <div class="pt-4 " style="color: rgb(50,80,90);">
             
-            <div class="">
-                <div class="d-flex justify-content-between">
-                    <h4 class="m-1 ">Categoría: ` + product.category + `</h4>
-                    <h4 class="m-1 ">` + product.name + `</h4>
-                    <h4 class="m-1 ">` + product.soldCount + `</h4>
-                </div>
-                    
-                <span> </span>
-                    
+            <div class="d-flex justify-content-between">
+                <h5 class="m-1 ">Categoría: "` + product.category + `"</h5>
+                <h2 class="m-1 " style="font-weight: bold;">` + product.name + `</h2>
+                <h5 class="m-1 ">` + product.soldCount + ` vendidos</h5>
             </div>
+                    
+            <span> </span>
         </div>
          ` ;
     
@@ -40,22 +39,34 @@ function ponerImagenes(product){
         <div class=" p-0">
             <div class=" ">
                 <img src="` + product.images[0] + `" alt="` + product.name + `" class="img-thumbnail">
-            </div>
-            <div class=" ">
-                <img src="` + product.images[3] + `" alt="` + product.name + `" class="img-thumbnail">
-            </div>
-            <div class="">
-                <img src="` + product.images[2] + `" alt="` + product.name + `" class="img-thumbnail">
-            </div>
-            <div class="">
-                <img src="` + product.images[1] + `" alt="` + product.name + `" class="img-thumbnail">
-            </div>
-            <div class="">
-                <img src="` + product.images[4] + `" alt="` + product.name + `" class="img-thumbnail">
-            </div>
+            </div>`;
+        
+        if( product.images.length > 1 ){
+            for(let h=1; h < product.images.length; h++ ){
+                htmlContentToAppend += `
+                <div class=" ">
+                    <img src="` + product.images[h] + `" alt="` + product.name + `" class="img-thumbnail">
+                </div>`;
+            }
+            
+        }
+
+    htmlContentToAppend += `
         </div>
     </div> ` ;
     document.getElementById("carusel").innerHTML += htmlContentToAppend;
+}
+
+function ponerPrecio(product){
+    let htmlContentToAppend = `
+    <div style="background-color:rgb(227,245,244);" >
+    
+    <span class="text-center d-block" style="font-size: 28px; font-weight: bold; margin-left: 30%; margin-right: 30%;" >` + product.currency + ` - ` + product.cost + `</span>
+    
+    </div>
+    `;
+
+    document.getElementById("Descripcion").innerHTML += htmlContentToAppend;
 }
 
 function ponerDescripcion(product){console.log(product);
@@ -106,25 +117,26 @@ function ponerUserDeComentario(comentarios, estrellotas, largo){
 }
 function ponerFechaDeComentario(comentarios, estrellotas, largo){
     for(let g=0; g<largo; g++){
-        estrellotas[g].innerHTML +=  `<span class="p-0" style="border-bottom: 3px skyblue solid;">` + comentarios[g].dateTime + `</span> `;
+        estrellotas[g].innerHTML +=  `<span class="p-0" style="border-bottom: 2px skyblue solid; display: block;">` + comentarios[g].dateTime + `</span> `;
     }
 }
 
 function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del producto relacionado
-    var agregarARelated = "";
+    var agregarARelated = ""; // productInfoResult = [1, 2, 3, 0, 1, 1];
     
     for(let n=0; n<productInfoResult.length; n++){
         agregarARelated += 
         
-        `<div class="pb-2"> <a href="#" class="card p-1 list-group-item-action shadow-sm " style="min-width: 130px;width: 100%;">
-            <img class="img-thumbnail" style="" src=" ` + arrayDeProducts[ productInfoResult[n]].imgSrc + ` ">
-            <h6 class="p-2 m-0" style="font-size: 24px;">`
-                + arrayDeProducts[ productInfoResult[n]].name + 
-            `</h6>
-            <h6>
-                <span class=" p-2 m-0" style="font-size: 15px;">` + arrayDeProducts[ productInfoResult[n]].currency+` - `+arrayDeProducts[ productInfoResult[n]].cost + `</span>
-            </h6>
-        </a>
+        `<div class="m-2" style="width: 165px; display: inline-block;">
+            <a href="#" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
+                <img style="width: 100%;" src=" ` + arrayDeProducts[ productInfoResult[n]].imgSrc + ` ">
+                <h6 class="p-2 m-0" style="font-size: 20px;">`
+                    + arrayDeProducts[ productInfoResult[n]].name + 
+                `</h6>
+                <h6>
+                    <span class=" p-2 m-0" style="font-size: 15px;">` + arrayDeProducts[ productInfoResult[n]].currency+` - `+arrayDeProducts[ productInfoResult[n]].cost + `</span>
+                </h6>
+            </a>
         </div>`;
         
     // arrayDeProducts[productInfoResult[n]]
@@ -149,20 +161,25 @@ function ponerProductosRelacionados(arrayDeProducts){    //  Incluir seccion y f
 
 //    col-md-6
 
-function ponerComentarios(comentarios, largo, resultComentarios){   // y tambien las estrellas
+function crearElemento(largo){
     var divToAppend ="";
     
     for(let jota=0; jota<largo; jota++){
         divToAppend = `
-        <div class=" comentarioSuper card px-3 py-1 mb-3 shadow-sm" style="border: 2px rgb(255, 255, 255,) solid; border-radius: 10px; min-width: 360px;">
+        <div class=" comentarioSuper  card px-3 py-1 mb-3 shadow " style="width: 49%; border: 2px rgb(255, 255, 255,) solid; border-radius: 10px; display: inline-block;">
             <div class="comentarios "></div>
         </div>
         `;
         document.getElementById("comentariosYpuntuacion").innerHTML += divToAppend;
     }
+}
 
-    var estrellotas = document.getElementsByClassName("comentarioSuper");
+
+function ponerComentarios(comentarios, largo, resultComentarios){   // y tambien las estrellas
+    crearElemento(largo);
+    
     var estrelliitas = document.getElementsByClassName("comentarios");
+    var estrellotas = document.getElementsByClassName("comentarioSuper");
 
     for(let j=0; j<largo; j++){
         ponerEstrellas(comentarios[j], j, estrelliitas);
@@ -189,7 +206,17 @@ function showProductInfo(product){
             <div class="carousel-inner img-thumbnail" style="border-radius: 10px;">
                 <div class="carousel-item active">
                     <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[0] + ` " alt="First slide">
-                </div>
+                </div>`;
+        if(product.images.length > 1 ){
+            for(let j=1; j<product.images.length; j++){
+                carrucel += `
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[j] + ` " alt="Second slide">
+                </div>`;
+            }
+        }// podria poner un ELSE para que muestre una foto que diga que no hay mas fotos, o que luego se publicaran mas fotos
+                
+    /*carrucel += `
                 <div class="carousel-item">
                     <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[3] + ` " alt="Second slide">
                 </div>
@@ -201,7 +228,9 @@ function showProductInfo(product){
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[4] + ` " alt="Third slide">
-                </div>
+                </div>`;*/
+                
+    carrucel +=`
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -214,11 +243,11 @@ function showProductInfo(product){
         </div> 
     
     </div>
-
     `;
 
     document.getElementById("carusel").innerHTML += carrucel;
 
+    ponerPrecio(product);
     ponerDescripcion(product);
 
     // Obtengo el objeto .json de los comentarios del producto
@@ -233,29 +262,95 @@ function showProductInfo(product){
             ponerComentarios(arrayDeScores, largo, resultObjComentarios.data);
         }
     });
+    
+    getJSONData(PRODUCTS_URL).then(function(resultObjRelated){
+        if (resultObjRelated.status === "ok"){
+            ponerProductosRelacionados(resultObjRelated.data);
+        }
 
+    });
 }
 
+//  Funcion para buscar el json correspondiente a cada producto por su identificador
+function incluyeId(url){
+    var urLdeBusqueda = url.href; console.log(urLdeBusqueda);
+    var posIndex = "";
 
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+    if( urLdeBusqueda.includes( "?id" ) || urLdeBusqueda.includes( "&id" ) ){
+
+        posIndex = urLdeBusqueda.indexOf("?id", 0);
+        urLdeBusqueda = urLdeBusqueda.slice(posIndex+4, urLdeBusqueda.length);
+        
+        return urLdeBusqueda;
+    }
+}
+
+function ponerEstrellasNewCom(score){
+    var stars=""; //<span style='padding-left: 14px;'></span>
+
+    for(let a=0; a<score ; a++){
+        stars += `<span class="fa fa-star checked"></span>
+        `;
+    }
+    for(let b=0; b<5-score; b++){
+        stars += `<span class="fa fa-star" style="color: black;"></span>
+        `;
+    }
+    return stars;
+}
+
+//  Añadir comentario nuevo
+var comentarioNuevo = document.getElementById("sendComentario");
+var contador = 4;
+
+comentarioNuevo.addEventListener("click", function(){
+    var comentarioToAppend = document.getElementById("textoDelComentario");
+    var estrellotas = document.getElementsByClassName("comentarios");
+
+    if(comentarioToAppend.value != ""){
+        var comentaSuperr = document.getElementsByClassName("comentarioSuper");
+        var hoy = new Date();
+        crearElemento(1);
+        
+        arrayDelNuevoComentario[0] = {"user": localStorage.getItem("user") , "description": comentarioToAppend.value, "dateTime": hoy.getFullYear() + '-' + ( hoy.getMonth() +1 ) + '-' + hoy.getDay() + ' ' + hoy.getHours() + ':' + hoy.getMinutes() };
+        estrellotas = [estrellotas[contador]];
+        comentaSuperr = [comentaSuperr [contador] ];
+        
+        var score = document.querySelector('input[name = "rankingEstrellas"]:checked').value;
+        
+        var stars = ponerEstrellasNewCom(score);
+        
+        document.getElementsByClassName("comentarios")[contador].innerHTML += stars;
+        
+        ponerUserDeComentario(arrayDelNuevoComentario, estrellotas, 1);
+        ponerDescripcionDeComentario(arrayDelNuevoComentario, comentaSuperr, 1);
+        ponerFechaDeComentario(arrayDelNuevoComentario, comentaSuperr, 1);
+        
+        // document.getElementById
+        contador += 1;
+        comentarioToAppend.value = "";
+    }
+
+});
+    
+    
+    
+    
+    //Función que se ejecuta una vez que se haya lanzado el evento de
+    //que el documento se encuentra cargado, es decir, se encuentran todos los
+    //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
+    var URLactual = window.location;
+    var idProducto = incluyeId(URLactual);
+
+    getJSONData(PRODUCTS_AWS_URL + idProducto).then(function(resultObj){
         if (resultObj.status === "ok"){  
             showProductInfo(resultObj.data);
             console.log(resultObj.data);
             productInfoResult = resultObj.data.relatedProducts;
-            console.log(productInfoResult);
-        }
-
-    });
-
-    getJSONData(PRODUCTS_URL).then(function(resultObjRelated){
-        if (resultObjRelated.status === "ok"){
-            ponerProductosRelacionados(resultObjRelated.data);
+            // console.log(productInfoResult);
         }
 
     });

@@ -28,14 +28,14 @@
 
 <body>
   
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-1 shadow" style="background-color: rgb(30,70,90);">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block btn fonditoo" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block btn fonditoo" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
+      <a class="py-1 d-none d-md-inline-block btn fonditoo" href="index.html" style="font-size: 21px;"> <i class="fas fa-home"></i> Inicio</a>
+        <a class="py-1 d-none d-md-inline-block btn fonditoo" href="categories.html" style="font-size: 21px;"><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="py-1 d-none d-md-inline-block btn fonditoo" href="products.html" style="font-size: 21px;"><i class="fas fa-th-list"></i> Productos</a>
+        <a class="py-1 d-none d-md-inline-block btn fonditoo" href="sell.html" style="font-size: 21px;"><i class="fas fa-dollar-sign"></i> Vender</a>
+        <a class="py-1 d-none d-md-inline-block btn fonditoo" href="cart.html" style="font-size: 21px;"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
+        <a class="py-1 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession" style="font-size: 21px;">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
     </div>
 
     <div class="container">
@@ -44,27 +44,55 @@
   </nav>
 
   <div class="container p-0 cambiarFondo" style="border-radius: 10px 10px 0px 0px;">
-    
     <div class="" id="titulo">
-      
     </div>
     
     <div class=" p-1 " style="display: flex;" id="carusel">
-      
     </div>
   </div>
 
   <div class="container p-0" id="Descripcion" style="border-bottom: 1px black solid;">
-    
   </div>
 
-  <div class="container d-flex list-gruop-item cambiarFondo" style="border-radius: 0px 0px 10px 10px;">
-    <div class="cambiarFondo p-2 col-md-10" id="comentariosYpuntuacion" style="border-radius: 10px;">
+  <div class="container cambiarFondo" style="border-radius: 0px 0px 10px 10px;">
+    <div class="cambiarFondo py-2 pl-2 pr-0 " id="comentariosYpuntuacion" style="border-radius: 10px;">
       <h4>Comentarios y puntuacion</h4>
     </div>
+
+    <div class="container">
       
-    <div class="col-md-2 p-2 m-1" id="Related" style="border-left: 1px black solid; margin-left: 20px;">
-      <h6 class="text-center">Productos relacionados</h6>
+      <div class="form-check form-check-inline">
+        <div >
+          <label class="form-check-label" for="inlineRadio1" style="padding-right: 30px; display: block;"><i class="fa fa-star checked"></i>1</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio2" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>2</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio3" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>3</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio4" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>4</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio5" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>5</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked>
+        </div>
+      </div>
+      
+      <div class="d-flex" style="width: 100%;">
+        <textarea type="text" class="btn-light form-control" id="textoDelComentario" placeholder="Escribe aquí tu comentario..." style="resize: none; border: 2px grey solid; color: black;"></textarea>
+        <input type="button" class="btn btn-info ml-3" id="sendComentario" value="Send">
+      </div>
+      
+    </div>
+      
+    <div class=" p-2 m-1" id="Related" >
+      <h4 class="text-center">Productos relacionados</h4>
     </div>
   </div>
 

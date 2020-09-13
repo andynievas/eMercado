@@ -22,7 +22,7 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class=" p-0 mb-2 list-group-item list-group-item-action shadow" id="borrame`+i+`">
+            <a href="product-info.html?id=` + product.id + `" class=" p-0 mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`">
                 <div class="row p-2">
                     <div class=" col-3">
                         <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail">
@@ -168,7 +168,7 @@ function filtrarPrecioAsc(contenedor, contenedorParaBotones){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
+    getJSONData(PRODUCTS_AWS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             ShowProducts(resultObj.data);
             filtrarPorTecleo();
@@ -250,27 +250,27 @@ function filtrarPorTecleo(){
     var arrayFiltrado = generarArrayFiltrado();
     currentProductsArray = [];
         
-        for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
+    for(let i=0; i<4; i++){  // Bucle para filtrar el array que verifica/compara si el texto buscado esta en
 
-            if( arrayFiltrado[i].includes(textBox.value.toLowerCase() ) ){  // Si se encuentra la busqueda se actualiza el array
-                currentProductsArray[h] = deRepuestoCurrentProductsArray[i]; // Actualizo el array global
-                h++;
-            }
+        if( arrayFiltrado[i].includes(textBox.value.toLowerCase() ) ){  // Si se encuentra la busqueda se actualiza el array
+            currentProductsArray[h] = deRepuestoCurrentProductsArray[i]; // Actualizo el array global
+            h++;
         }
+    }
 
 }
     
-    var nombre = "";
+var nombre = "";
     
-    textBox.addEventListener('keyup', function(){
+textBox.addEventListener('keyup', function(){
 
-        if( event.key !== 'Backspace' && event.key !== 'Enter'){
-            nombre += event.key;
-        }else if(event.key == 'Backspace'){
-            nombre = nombre.slice(0, nombre.length-1);
-        }
+    if( event.key !== 'Backspace' && event.key !== 'Enter'){
+        nombre += event.key;
+    }else if(event.key == 'Backspace'){
+        nombre = nombre.slice(0, nombre.length-1);
+    }
         
-        filtrarPorTecleo();
-        ShowProducts();
-        
-    });
+    filtrarPorTecleo();
+    ShowProducts();        
+});
+

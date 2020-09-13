@@ -148,16 +148,9 @@ a.custom-card:hover {
   color: orange;
 }
 
-/* #userSession:hover{
-  color: #53C0FB;
-} */
 
-.fonditoo {
-  background-color: rgb(100, 100, 100);
-}
 .fonditoo:hover {
   background-color: rgba(236, 69, 91, 0.877);
-  /* color: white; */
 }
 
 .fondoSession{
