@@ -23,9 +23,9 @@ function showProductsList(){
 
             htmlContentToAppend += `
             <a href="product-info.html?id=` + product.id + `" class=" p-0 mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`">
-                <div class="row p-2">
+                <div class="row p-0 m-0">
                     <div class=" col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail">
+                        <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 80%;">
                     </div>
                     <div class=" col">
                         <div class="d-flex w-100 justify-content-between">
@@ -45,7 +45,7 @@ function showProductsList(){
         arrayParaBuscar[i] += product.description;
     }
     
-    arrayTags_P5[3].innerHTML = htmlContentToAppend;
+    arrayTags_P5[2].innerHTML = htmlContentToAppend;
 }
 
 function ordenarByPrecioAsc(array){

@@ -23,15 +23,25 @@
         <a class="py-1 d-none d-md-inline-block btn fonditoo" href="products.html" style="font-size: 21px;"><i class="fas fa-th-list"></i> Productos</a>
         <a class="py-1 d-none d-md-inline-block btn fonditoo" href="sell.html" style="font-size: 21px;"><i class="fas fa-dollar-sign"></i> Vender</a>
         <a class="py-1 d-none d-md-inline-block btn fonditoo" href="cart.html" style="font-size: 21px;"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
-        <a class="py-1 d-none d-md-inline-block btn bg-danger" href="#"><span id="userSession" style="font-size: 21px;">Ingresar</span> <img src="img/sort-down-solid.svg" style="width: 12px; padding: 0px 1px 7px 1px; margin: 0px;"> </a>
-      </div>
-      <div class="container">
-        <a href="#" id="logOut" class="" style="text-align: right; margin-right: 20px;">Cerrar sesión</a>
+
+        <!-- Comienza el boton desplegable -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Mi Carrito</a>
+            <a class="dropdown-item" href="#">Mi Perfil</a>
+            <a class="dropdown-item" href="index.html" id="log-out">Cerrar sesion</a>
+          </div>
+        </div>
+        <!-- Aqui termina el boton desplegable -->
       </div>
 
     </nav>
+
     <div class="text-center p-0 pt-2">
-      <h2 style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Productos</h2>
+      <h2 class="p-2" style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Productos</h2>
       <p class="lead" style="margin-bottom: 0px;">Verás aquí todos los productos del sitio.</p>
     </div>
           <!-- Aqui comienza la Seccion que trajo por defecto y se ve lindo -->
@@ -120,7 +130,7 @@
           </div>
         </div>  Esto es un comentario -->
 
-      <div class="container p-0 m-0"> <!-- Cuarto div con clase="container" -->
+      <div class="container px-4 m-0"> <!-- Cuarto div con clase="container" -->
         <span>hola</span>
       </div>
 
