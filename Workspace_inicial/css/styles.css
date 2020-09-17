@@ -148,21 +148,12 @@ a.custom-card:hover {
   color: orange;
 }
 
-
 .fonditoo:hover {
   background-color: rgb(105, 213, 255);
 }
 
-.fondoSession{
-  background-color: rgba(236, 69, 91, 0.877);
+.posisionAbs {
+  position: fixed;
+  width: 100%;
+  z-index: 4;
 }
-
-#logOut{
-  display: none;
-}
-
-#logOut.cerrarSessionn{
-  
-  display: block;
-}
-

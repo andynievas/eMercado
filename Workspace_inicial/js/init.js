@@ -42,6 +42,44 @@ var getJSONData = function(url){
     });
 }
 
+function addUserDropdown(){
+  let htmlToAppend = `<!-- Comienza el boton desplegable -->
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle alert-info" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Ingresar
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+      
+      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo" href="cart.html">
+        <div class=" p-0 d-none d-md-inline-block btn">
+          <span  class="fas fa-shopping-cart" style="width: 40px; font-size: 21px;"></span>
+          <span style="width: 80%; font-size: 21px;"> Mi carrito</span>
+        </div>
+      </a>
+
+      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo" href="my-profile.html">
+        <div class=" p-0 d-none d-md-inline-block btn">
+          <span  class="fas fa-user-circle" style="width: 40px; font-size: 21px;"></span>
+          <span style="width: 80%; font-size: 21px;"> Mi perfil</span>
+        </div>
+      </a>
+
+      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo" href="index.html" id="logOut">
+        <div class=" p-0 d-none d-md-inline-block btn">
+          <span  class="fas fa-sign-out-alt" style="width: 40px; font-size: 21px;"></span>
+          <span style="width: 80%; font-size: 21px;">Cerrar sesión</span>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+  <!-- Aqui termina el boton desplegable -->` ;
+
+  document.getElementById("navBar").innerHTML += htmlToAppend;
+}
+
+addUserDropdown();
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -68,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
   }
 
-  var icon = document.getElementsByTagName("head");
-  icon[0].innerHTML += `
+  var head = document.getElementsByTagName("head");
+  head[0].innerHTML += `
   <link rel="shortcut icon" href="img/icons/e-Logo(max).png">` ; 
 
 });

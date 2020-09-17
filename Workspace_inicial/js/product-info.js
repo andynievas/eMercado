@@ -7,8 +7,8 @@ var productInfoResult;
 var arrayDelNuevoComentario = [];
 
 function setearColorFondo(){
-    var largoG = document.getElementsByClassName("cambiarFondo");console.log(largoG);
-    document.getElementById("titulo").style = "background-color: " + fondoColor + ";";
+    var largoG = document.getElementsByClassName("cambiarFondo");
+    // document.getElementById("titulo").style = "background-color: " + fondoColor + ";";
     for(let i=0; i<largoG.length; i++){
         largoG[i].style.background = fondoColor ;
     }
@@ -17,15 +17,8 @@ function setearColorFondo(){
 function ponerNombre(product){
 
     let htmlContentToAppend = `
-        <div class="pt-4 " style="color: rgb(50,80,90);">
-            
-            <div class="d-flex justify-content-between">
-                <h5 class="m-1 ">Categoría: "` + product.category + `"</h5>
-                <h2 class="m-1 " style="font-weight: bold;">` + product.name + `</h2>
-                <h5 class="m-1 ">` + product.soldCount + ` vendidos</h5>
-            </div>
-                    
-            <span> </span>
+        <div class="border-top p-0 site-header posisionAbs alert-info" style="height: 50px; ">
+            <h3 class="m-1 text-center" style="font-weight: bold;">` + product.name + `</h3>
         </div>
          ` ;
     
@@ -33,9 +26,28 @@ function ponerNombre(product){
 
 }
 
+function ponerBotonCollapsable(){
+
+    let htmlToApend = `
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Ver +info
+            </button>
+        </p>
+
+        <div class="collapse" id="collapseExample">
+
+            <div style="display: flex;" id="carusel">
+            </div>
+
+        </div>` ;
+
+    document.getElementById("contenedorImagenes").innerHTML += htmlToApend;
+}
+
 function ponerImagenes(product){
     var htmlContentToAppend = `
-    <div class="p-1" style="width: 20%;">
+    <div class="p-0" style="width: 19%;">
         <div class=" p-0">
             <div class=" ">
                 <img src="` + product.images[0] + `" alt="` + product.name + `" class="img-thumbnail">
@@ -59,30 +71,27 @@ function ponerImagenes(product){
 
 function ponerPrecio(product){
     let htmlContentToAppend = `
-    <div style="background-color:rgb(227,245,244);" >
-    
-    <span class="text-center d-block" style="font-size: 28px; font-weight: bold; margin-left: 30%; margin-right: 30%;" >` + product.currency + ` - ` + product.cost + `</span>
-    
+    <div class="p-1 d-flex cambiarFondo">
+        <h5 style="width: 30%">Categoría: ` + product.category + `</h5>
+        <h4 class="text-center" style="font-size: 28px; font-weight: bold; width: 40%;" >` + product.currency + ` - ` + product.cost + `</h4>
+        <h5 style="width: 30%; text-align: right;">` + product.soldCount + ` artículos vendidos</h5>
     </div>
     `;
 
     document.getElementById("Descripcion").innerHTML += htmlContentToAppend;
 }
 
-function ponerDescripcion(product){console.log(product);
+function ponerDescripcion(product){
 
     let htmlContentToAppend = `
-        <div class="alert-info p-4" style="background-color:`+ fondoColor +`;">
+        <div class="cambiarFondo border-top my-3">
             
             <div class=" justify-content-between">
-                <span style="color: black; font-size: 24px;">Descripción del artículo: </span>  <br>
+                <h4 class="py-2" style="color: black;">Descripción del artículo: </h4>
                 <h6 class="m-1 ">  ` + product.description + `</h6>
             </div>
                     
-            <span> </span>
-
-        </div>
-         ` ;
+        </div>` ;
     
     document.getElementById("Descripcion").innerHTML += htmlContentToAppend;
 
@@ -117,7 +126,7 @@ function ponerUserDeComentario(comentarios, estrellotas, largo){
 }
 function ponerFechaDeComentario(comentarios, estrellotas, largo){
     for(let g=0; g<largo; g++){
-        estrellotas[g].innerHTML +=  `<span class="p-0" style="border-bottom: 2px skyblue solid; display: block;">` + comentarios[g].dateTime + `</span> `;
+        estrellotas[g].innerHTML +=  `<span class="p-0 border-top" style=" display: block;">Fecha: ` + comentarios[g].dateTime + `</span> `; // Tambien queda lindo con:  "border-top: 1px black solid; border-bottom: 2px skyblue solid;"
     }
 }
 
@@ -148,7 +157,7 @@ function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del p
 function ponerProductosRelacionados(arrayDeProducts){    //  Incluir seccion y formato para los productos relacionados
     var divToAppend = `
     
-    <div class="container p-0" id="productsRelacionados" >    </div>
+    <div class="container p-0" id="productsRelacionados" ></div>
     
     `;
     // for(let jota=0; jota<productInfoResult.length; jota++){
@@ -156,7 +165,7 @@ function ponerProductosRelacionados(arrayDeProducts){    //  Incluir seccion y f
     // }
 
     ponerInfoDeRelated(arrayDeProducts);
-    setearColorFondo();
+    // setearColorFondo();
 }
 
 //    col-md-6
@@ -194,13 +203,14 @@ function ponerComentarios(comentarios, largo, resultComentarios){   // y tambien
 function showProductInfo(product){
 
     ponerNombre(product);
+    ponerBotonCollapsable();
     ponerImagenes(product);
 
     let carrucel ="";
 
     carrucel = `
     
-    <div class="container p-1 cambiarFondo" style="width: 100%; border-radius: 10px;">
+    <div class="pl-1 cambiarFondo" style="width: 100%; border-radius: 10px; z-index: 2;">
 
         <div id="carouselExampleControls" class=" carousel slide" data-ride="carousel" data-interval="0">
             <div class="carousel-inner img-thumbnail" style="border-radius: 10px;">
@@ -215,20 +225,6 @@ function showProductInfo(product){
                 </div>`;
             }
         }// podria poner un ELSE para que muestre una foto que diga que no hay mas fotos, o que luego se publicaran mas fotos
-                
-    /*carrucel += `
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[3] + ` " alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[2] + ` " alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[1] + ` " alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[4] + ` " alt="Third slide">
-                </div>`;*/
                 
     carrucel +=`
             </div>
@@ -273,7 +269,7 @@ function showProductInfo(product){
 
 //  Funcion para buscar el json correspondiente a cada producto por su identificador
 function incluyeId(url){
-    var urLdeBusqueda = url.href; console.log(urLdeBusqueda);
+    var urLdeBusqueda = url.href;
     var posIndex = "";
 
 
@@ -346,11 +342,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     var idProducto = incluyeId(URLactual);
 
     getJSONData(PRODUCTS_AWS_URL + idProducto).then(function(resultObj){
-        if (resultObj.status === "ok"){  
+        if (resultObj.status === "ok"){
+
             showProductInfo(resultObj.data);
-            console.log(resultObj.data);
             productInfoResult = resultObj.data.relatedProducts;
-            // console.log(productInfoResult);
         }
 
     });

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- CSS only 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  JS, Popper.js, and jQuery 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  -->
+
+</head>
+
+<body>
+  
+  <nav class="site-header sticky-top py-1" style="background-color: rgb(30,70,90);">
+    <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
+      <a class="p-2 d-none d-md-inline-block btn fonditoo" href="index.html" > <i class="fas fa-home"></i> Inicio</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="categories.html" ><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="products.html" ><i class="fas fa-th-list"></i> Productos</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo" href="sell.html" ><i class="fas fa-dollar-sign"></i> Vender</a>
+    
+    </div>
+
+  </nav>
+  
+  <div class=" p-0 cambiarFondo" id="titulo" style="height: 60px; ">
+    
+  </div>
+
+  <div class="container p-0 cambiarFondo" style="border-radius: 10px 10px 0px 0px;" id="contenedorImagenes">
+    
+    
+  </div>
+
+  <div class="container p-0 border-bottom" id="Descripcion">
+  </div>
+
+  <div class="container p-0 cambiarFondo" style="border-radius: 0px 0px 10px 10px;">
+    <div class="cambiarFondo" id="comentariosYpuntuacion" style="border-radius: 10px;">
+      <h4 class="pt-2">Comentarios y puntuacion</h4>
+    </div>
+
+    <div>
+
+      <h4 class="pt-2 mt-3 border-top">Tu propio comentario</h4>
+      
+      <div class="form-check form-check-inline px-2">
+        <div >
+          <label class="form-check-label" for="inlineRadio1" style="padding-right: 30px; display: block;"><i class="fa fa-star checked"></i>1</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio2" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>2</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio3" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>3</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio4" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>4</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4">
+        </div>
+        <div>
+          <label class="form-check-label" for="inlineRadio5" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>5</label>
+          <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked>
+        </div>
+      </div>
+      
+      <div class="d-flex pl-2 pr-3" style="width: 100%;">
+        <textarea type="text" class="btn-light form-control" id="textoDelComentario" placeholder="Escribe aquí tu comentario..." style="resize: none; border: 2px grey solid; color: black;"></textarea>
+        <input type="button" class="btn btn-info ml-3" id="sendComentario" value="Send">
+      </div>
+      
+    </div>
+      
+    <div class="my-4 py-3 border-top" id="Related" >
+      <h4 class="text-center">Productos relacionados</h4>
+    </div>
+  </div>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+
+</body>
+
+</html>
