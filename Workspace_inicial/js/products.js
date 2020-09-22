@@ -22,12 +22,12 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <a href="product-info.html?id=` + product.id + `" class=" p-0 mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`">
+            <a href="product-info.html" class="mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
                 <div class="row p-0 m-0">
-                    <div class=" col-3">
+                    <div class="p-0 col-3">
                         <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 80%;">
                     </div>
-                    <div class=" col">
+                    <div class="p-0 col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ product.name +`</h4>
                             <small class="text-muted">` + product.soldCount + ` artículos</small>
@@ -158,9 +158,12 @@ function sortAndShowProducts(sortCriteria, productsArray){
     showProductsList();
 }
 
-function filtrarPrecioAsc(contenedor, contenedorParaBotones){
-    getElementById("buscador").value; // Agarrar el valor del input buscador para ordenar los elementos
+
+function saveId(id){
+    localStorage.setItem("idProduct", id);
 }
+
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

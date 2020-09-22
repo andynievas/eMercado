@@ -14,6 +14,10 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+
+
+
+
   </head>
   <body>
     <nav class="site-header sticky-top py-1 shadow-lg" style="background-color: rgb(30,70,90); ">
@@ -38,12 +42,8 @@
       <div class="p-2 mb-4 alert-info shadow" role="alert" style="border-radius: 10px;">
         <div class="p-0" style="width: 100%;">
           
-          <div class="btn-group" role="group" style="width: 100%;">
-            <label for="buscador" style="width: 10vw"></label>
-            <input class="btn btn-light" type="search" id="buscador" placeholder="Buscar en Productos" value="" size="18" style="width: 400px; border-radius: 10px;">
-            <label for="buscador" style="width: 10vw"></label>
-
-            <!-- <button class="btn btn-light" style="margin-right: 6vw; border-radius: 10px;"><i class="fas fa-search"></i> Buscar -->
+          <div class="d-flex">
+            <input class="form-control" type="search" id="buscador" placeholder="Buscar en Productos" value="" style="width: 100%; border-radius: 10px; margin-left: 10vw; margin-right: 10vw;">
           </div>
         </div>
         <!-- <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -52,7 +52,7 @@
         <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
       </div>
       <!-- Termina la Seccion por defecto y empieza la parte que yo le pongo mi codigo -->
-      <div class="mx-4">
+      <div class="mx-0">
       <div class="btn-group btn-group-toggle mb-2 shadow-sm" data-toggle="buttons">
 
         <label class="btn btn-light" id="sortAsc" style="width: 27.5vw; max-width: 160px;">
@@ -71,15 +71,15 @@
 
       <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
 
-        <div class="col">
+        <div class="col p-0">
           <p class="font-weight-normal text-right my-2" style="width: 70px;">Rango $.</p>
         </div> 
-          <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 100px">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 100px">
-          </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 100px">
+        </div>
+        <div class="col p-0">
+          <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 100px">
+        </div>
 
       </div>
 
@@ -93,11 +93,13 @@
       </div>
       </div>
 
-      <div class="container px-4 m-0">
+      <div class="container px-0 m-0">
         <span>prueba1</span>
       </div>
 
     </div> <!-- Aqui termina el contenedor principal -->
+
+    
 
     <footer class="text-muted bg-light">
       <div class="container">

@@ -152,8 +152,49 @@ a.custom-card:hover {
   background-color: rgb(105, 213, 255);
 }
 
-.posisionAbs {
-  position: fixed;
-  width: 100%;
-  z-index: 4;
+.responsiveFont{
+  font-size: 26px;
 }
+
+.responsiveAlign{
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  #nombreDeUsuario{
+    display: none;
+  }
+
+  .responsiveFont{
+    font-size: 4vw;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .responsiveFont{
+    font-size: 6vw;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  #menuDelCostado{
+    display: none;
+  }
+
+  .responsiveAlignRight{
+    text-align: right;
+  }
+
+  .responsiveAlignLeft{
+    text-align: left;
+  }
+}
+
+.menuDelCostado a{
+  display: block;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+

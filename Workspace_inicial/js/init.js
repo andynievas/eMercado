@@ -43,8 +43,33 @@ var getJSONData = function(url){
 }
 
 function addUserDropdown(){
-  let htmlToAppend = `<!-- Comienza el boton desplegable -->
-  <div class="dropdown">
+
+  var navBar = document.getElementsByTagName("nav");
+  let htmlToAppend = `
+  <div class="px-4" id="menuDelCostado">
+  <p class="m-0" style="text-align: right;">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
+      Ver más opciones
+    </button>
+  </p>
+
+  <div class="collapse" id="collapseExampleV2">
+    <div class="menuDelCostado">
+      <a href="index.html">Inicio</a>
+      <a href="categories.html">Categorías</a>
+      <a href="products.html">Productos</a>
+      <a href="sell.html">Vender</a>
+      <a href="cart.html">Mi carrito</a>
+      <a href="my-profile.html">Mi perfil</a>
+    </div>
+  </div>
+
+  </div>`;
+
+  navBar[0].innerHTML += htmlToAppend;
+
+  htmlToAppend = `<!-- Comienza el boton desplegable -->
+  <div class="dropdown" id="nombreDeUsuario">
     <button class="btn btn-secondary dropdown-toggle alert-info" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Ingresar
     </button>
