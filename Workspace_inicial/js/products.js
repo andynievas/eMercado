@@ -14,7 +14,7 @@ textBox.value = '';
 function showProductsList(){
 
     let htmlContentToAppend = "";
-    let arrayTags_P5 = document.getElementsByClassName("container");
+    let seccionProductos = document.getElementById("seccionProductos");
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
@@ -22,21 +22,23 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
+            <div>
             <a href="product-info.html" class="mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
                 <div class="row p-0 m-0">
-                    <div class="p-0 col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 80%;">
+                    <div class="p-0 col-12 col-sm-5 col-md-3"><center>
+                        <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 96%;"></center>
                     </div>
-                    <div class="p-0 col">
+                    <div class="px-2 col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ product.name +`</h4>
                             <small class="text-muted">` + product.soldCount + ` artículos</small>
                         </div>
                         <p class="mb-1">` + product.description +`</p>
-                        <p style="font-family: 'Audiowide'; font-weight: bold;"> ` + product.currency + ` - ` + product.cost + ` </p>
+                        <p class="m-0" style="font-family: 'Audiowide'; font-weight: bold;"> ` + product.currency + ` - ` + product.cost + ` </p>
                     </div>
                 </div>
             </a>
+            </div>
             `
         }
 
@@ -44,8 +46,8 @@ function showProductsList(){
         arrayParaBuscar[i] += '. ';
         arrayParaBuscar[i] += product.description;
     }
-    
-    arrayTags_P5[2].innerHTML = htmlContentToAppend;
+
+    seccionProductos.innerHTML = htmlContentToAppend;
 }
 
 function ordenarByPrecioAsc(array){
@@ -265,15 +267,24 @@ function filtrarPorTecleo(){
     
 var nombre = "";
     
-textBox.addEventListener('keyup', function(){
+textBox.addEventListener('keyup', function(event){
+    console.log(event);
 
     if( event.key !== 'Backspace' && event.key !== 'Enter'){
+        console.log(event.code);
         nombre += event.key;
     }else if(event.key == 'Backspace'){
         nombre = nombre.slice(0, nombre.length-1);
     }
         
     filtrarPorTecleo();
-    ShowProducts();        
+    ShowProducts();   
+});
+
+document.getElementById("buscador").addEventListener("click", ()=> {
+    setTimeout( ()=> {
+        filtrarPorTecleo();
+        ShowProducts();
+    }, 100);
 });
 

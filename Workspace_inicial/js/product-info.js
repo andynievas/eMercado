@@ -73,7 +73,7 @@ function ponerPrecio(product){
     
     
     htmlContentToAppend = `
-        <a href="#" class="btn text-center responsiveFont p-0" autofocus="autofocus" title="El costo del producto puede variar según la ubicación del envío." data-toggle="popover" data-trigger="focus" data-content="Toca en cualquier lado para cerrar" style=" font-weight: bold; width: 100%;">Precio: ` + product.currency + ` - `  + product.cost + `</a>
+        <a href="#" class="btn text-center responsiveFont p-0" title="El costo del producto puede variar según la ubicación del envío." data-toggle="popover" data-trigger="hover click" data-content="" style=" font-weight: bold; width: 100%; z-index: 1;">Precio: ` + product.currency + ` - `  + product.cost + `</a>
         `;
     // </div>
 
@@ -110,7 +110,7 @@ function addCardInGroup(array, posArray){
         <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3 px-0 mb-2">
             <div class="card-body px-4">
                 <h5 class="card-title" >` + ponerEstrellas(array[posArray].score) + `</h5>
-                <h5 class="card-title">` + array[posArray].user + `</h5>
+                <h5 class="card-title"><img src="https://thispersondoesnotexist.com/image" style="width: 50px; margin-right: 15px; border-radius: 50%;">` + array[posArray].user + `</h5>
                 <p class="card-text">` + array[posArray].description + `.</p>
             </div>
             <div class="card-footer">
@@ -224,6 +224,10 @@ function addNewUserComentStructure(){
     document.getElementById("seccionComentario").innerHTML += htmlToApend;
 }
 
+function saveId(id){
+    localStorage.setItem("idProduct", id);
+}
+
 function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del producto relacionado
     var agregarARelated = "";
     
@@ -231,7 +235,7 @@ function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del p
         agregarARelated += 
         
         `<div class="m-1" style="width: 160px; display: inline-block;">
-            <a href="#" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
+            <a href="product-info.html" id="` + arrayDeProducts[ productInfoResult[n] ].id + `" onclick="saveId(`+ arrayDeProducts[ productInfoResult[n] ].id +`)" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
                 <img style="width: 100%;" src=" ` + arrayDeProducts[ productInfoResult[n]].imgSrc + ` ">
                 <h6 class="p-2 m-0" style="font-size: 20px;">`
                     + arrayDeProducts[ productInfoResult[n]].name + 
@@ -324,14 +328,14 @@ function showProductInfo(product){
                 arrayDeScores[arr] = resultObjComentarios.data[arr].score;
             }
             ponerComentarios(largo, resultObjComentarios.data);
-            console.log(resultObjComentarios.data);
         }
     });
 
     addNewUserComentStructure();
     
-    getJSONData(PRODUCTS_URL).then(function(resultObjRelated){
+    getJSONData(PRODUCTS_AWS_URL).then(function(resultObjRelated){
         if (resultObjRelated.status === "ok"){
+            console.log(resultObjRelated.data);
             ponerProductosRelacionados(resultObjRelated.data);
         }
 
@@ -397,9 +401,6 @@ function addPopOver(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    var URLactual = window.location;
-    var idProducto = incluyeId(URLactual);
-
     getJSONData(PRODUCTS_AWS_URL + localStorage.getItem("idProduct") ).then(function(resultObj){
         if (resultObj.status === "ok"){
 
@@ -408,16 +409,38 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
     });
+
+
+
+    // var userImage = document.getElementById("jose").src;
     
-    //  Funcion para el POPOVER
+    //  Funcion para el POP-OVER
     setTimeout(function() {
         console.log("Esperar...");
   
         $(document).ready(function(){
           $('[data-toggle="popover"]').popover('show');
       });
+
+    //   userImage.load("img/cat9.jpg");
   
-      }, 2000);
+      }, 1000);
+
+      setTimeout( () => {
+        //   .popover('disable');
+          $(document).ready(function(){
+            $('[data-toggle="popover"]').popover('hide');
+        });
+
+      }, 5000)
 
 });
 
+var imagenPrueba = "https://thispersondoesnotexist.com/image";
+
+function anadeUnDiv (){
+    document.getElementById("Descripcion").innerHTML += `
+    <p>Andy</p>
+    <img src="https://thispersondoesnotexist.com/image" width="50%">
+    `;
+}

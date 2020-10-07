@@ -198,3 +198,20 @@ a.custom-card:hover {
   text-align: center;
 }
 
+.vertical-center {  /* clase para alinear verticalmente (se aplica al contenedor de los objetos) */
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.centerItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid green; 
+}
+

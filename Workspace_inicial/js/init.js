@@ -44,7 +44,7 @@ var getJSONData = function(url){
 
 function addUserDropdown(){
 
-  var navBar = document.getElementsByTagName("nav");
+  var navBar = document.getElementsByTagName("nav")[0];
   let htmlToAppend = `
   <div class="px-4" id="menuDelCostado">
   <p class="m-0" style="text-align: right;">
@@ -66,11 +66,11 @@ function addUserDropdown(){
 
   </div>`;
 
-  navBar[0].innerHTML += htmlToAppend;
+  navBar.innerHTML += htmlToAppend;
 
   htmlToAppend = `<!-- Comienza el boton desplegable -->
   <div class="dropdown" id="nombreDeUsuario">
-    <button class="btn btn-secondary dropdown-toggle alert-info" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-secondary dropdown-toggle alert-info px-1 py-0" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Ingresar
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -101,6 +101,11 @@ function addUserDropdown(){
   <!-- Aqui termina el boton desplegable -->` ;
 
   document.getElementById("navBar").innerHTML += htmlToAppend;
+
+  navBar.background = " rgb(30,70,90);";
+  navBar.style = "background-color: rgb(30,70,90); z-index: 6";
+  navBar.className = "site-header sticky-top py-1";
+
 }
 
 addUserDropdown();
@@ -126,14 +131,15 @@ document.addEventListener("DOMContentLoaded", function(e){
   
     if( localStorage.getItem('user')!=null ){
       if(currentUser != null){
-        currentUser.innerHTML = finalUser;
+        currentUser.innerHTML = finalUser + `<img src="https://thispersondoesnotexist.com/image" class="ml-2" style="width: 38px; border-radius: 50%; margin-top: 1px; margin-bottom: 1px;">
+        `;
       }
     }
   }
 
   var head = document.getElementsByTagName("head");
   head[0].innerHTML += `
-  <link rel="shortcut icon" href="img/icons/e-Logo(max).png">` ; 
+  <link rel="shortcut icon" href="img/icons/e-Logo.png">` ; 
 
 });
 
