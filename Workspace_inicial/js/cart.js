@@ -1,5 +1,7 @@
 
 const CART_INFO_TWO_PRODUCTS_URL = 'https://japdevdep.github.io/ecommerce-api/cart/654.json';
+var subtotal = "";
+var allSubtotals = [];
 
 
 
@@ -10,19 +12,20 @@ function showCartInfo (infoCart) {
         <h3>Artículos a comprar</h3>
         <hr>`;
 
-        // infoCart[i].src
         for(let i=0; i<infoCart.length; i++) {
             contentToAdd += `
             <div class="row my-3 mx-0">
+                <div class="col-12 col-md-3 col-lg-2 p-0 pr-3">
+                    <img class="img-thumbnail mr-4" style="width: 160px;" src="` + infoCart[i].src + `" >    
+                </div>
                 
-                <img class="img-thumbnail mr-4" style="width: 100px;" src="` + infoCart[i].src + `" >    
-                
-                <div>
+                <div class="col-12 col-md-9 col-lg-10 p-0">
                     <h3 class="mt-2">` + infoCart[i].name + `.</h3>
                     <div class="row m-0">
                         <span class="mr-3 " style="font-size: 20px;">Cant.</span>
-                        <input type="number" class="form-control mr-4 pb-0 pt-0" id="unitCount`+ i +`" min="0" value="`+ infoCart[i].count +`" style="width: 60px; height: 28px; font-size: 18px; font-family: 'Armata';" value="`+ infoCart.count +`" />
+                        <input type="number" class="form-control mr-4 pb-0 pt-0" pos="${i}" id="productNumber`+ i +`" onChange="calcularSubtotal(this)" min="0" max="10" value="`+ infoCart[i].count +`" cost="`+ infoCart[i].unitCost +`" currency="${infoCart[i].currency}" style="width: 60px; height: 28px; font-size: 18px; font-family: 'Armata';" value="`+ infoCart.count +`" />
                         <span class="m-0 " style="font-size: 20px; width: 330px;">Costo por unidad (`+ infoCart[i].currency +`):  $` + infoCart[i].unitCost + ` </span>
+                        <span class="col-12 my-1 py-1 px-0 border-top" style="font-size: 20px; font-weight: bold;">Subtotal(${infoCart[i].currency}): $<span id="subtotal_${i}">${parseInt( infoCart[i].unitCost) * parseInt( infoCart[i].count) }<span> </span>
                     </div>
             
                 </div>
@@ -31,32 +34,96 @@ function showCartInfo (infoCart) {
             <hr>
 
             `;
+
+            allSubtotals.push(infoCart[i].unitCost);
         }
         
         contentToAdd += `
         
-        <div class="d-flex">
-            <div style="width: 50%;">
-                <p style="margin: 8px; font-size: 20px;">Subtotal (USD)</p>
-                <p style="margin: 8px; font-size: 20px;">Costo de envío (USD)</p>
-                <p class="mb-0" style="margin: 8px; font-size: 20px;">Total (USD)</p>
+        <div id="costos">
+            <h3>Costos</h3>
+            
+            <div class="row m-0">
+                
+                <div class="col p-0">
+                    <p class="responsiveFontV2 mx-0" style=" font-weight: bold;" >Subtotal (USD)</p>
+                </div>
+                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Subtotal" style=" font-weight: bold;">0</span></p> </div>
+
             </div>
 
-            <div style="width: 50%;">
-                <div class=" text-right border btn-light shadow-sm" style="border-radius: 6px; width: 110px; margin-right: 0; margin-left: auto;"><p id="Subtotal" style="margin: 4px; font-size: 20px;" >0</p> </div>
-                <div class=" text-right border btn-light shadow-sm" style="border-radius: 6px; width: 110px; margin-right: 0; margin-left: auto;"><p id="sendCost" style="margin: 4px; font-size: 20px;" >0</p></div>
-                <div class=" text-right border btn-light shadow-sm" style="border-radius: 6px; width: 110px; margin-right: 0; margin-left: auto;"><p id="Total" style="margin: 4px; font-size: 20px;" >0</p></div> 
+            <div class="row m-0">
+                
+                <div class="col p-0">
+                    <p class="responsiveFontV2 mx-0" style=" font-weight: bold;" >Costo de envío (USD)</p>
+                </div>
+                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="sendCost" style=" font-weight: bold;">0</span></p></div>
+
+            </div>
+
+            <div class="row m-0">
+                
+                <div class="col p-0">
+                    <p class="responsiveFontV2 mx-0" style=" font-weight: bold;" >Total (USD)</p>
+                </div>
+                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Total" style=" font-weight: bold;">0</span></p></div> 
+
             </div>
         </div>
 
         <hr>
     
-    </div>`;
+    </div>
+    
+    <button class="btn btn-lg btn-primary">Finalizar compra</button>`;
+
     document.getElementById("contenedorPrincipal").innerHTML = contentToAdd;
-    document.getElementById("unitCount1").max = 3;
+    subtotal = document.getElementById("Subtotal");
+    subtotal.innerHTML = sumatoriaSubtotales();
+    document.getElementById("Total").innerHTML = subtotal.textContent;
 }
 
+//   Termina la parte de agregar la información al HTML
+//   De aca para abajo está la parte del evento onChange
 
+function subtotalPerElement(costo, unidad){
+    return costo * unidad;
+}
+
+function sumatoriaSubtotales(){
+    var suma = 0;
+    for(let i=0; i<allSubtotals.length; i++ ){
+        suma += allSubtotals[i];
+    }
+    return suma;
+}
+
+function calculoAux(unitCost, valor, pos){
+    allSubtotals[pos] = unitCost * valor;
+}
+
+function convertirAdolar(unitCost, cantidad, pos){
+    var factorDeConversion = 1/40;
+    calculoAux( (unitCost * factorDeConversion) , cantidad , pos );
+}
+
+function calcularSubtotal(esteTag){
+
+    if(esteTag.getAttribute("currency") === "USD" ){
+        // calculoAux()
+        // console.log("Es dolar");
+        calculoAux(esteTag.getAttribute("cost"), document.getElementById(esteTag.id).value , esteTag.getAttribute("pos"));
+
+    }else if(esteTag.getAttribute("currency") === "UYU" ){
+        // convertir a dolar
+        // console.log("Es UYU");
+        convertirAdolar( esteTag.getAttribute("cost"), document.getElementById(esteTag.id).value , esteTag.getAttribute("pos")  );
+    }
+    
+    document.getElementById("subtotal_" + esteTag.getAttribute("pos") ).innerHTML = subtotalPerElement(esteTag.getAttribute("cost") , document.getElementById(esteTag.id).value );
+    subtotal.innerHTML = sumatoriaSubtotales();
+    document.getElementById("Total").innerHTML = (sumatoriaSubtotales() ) + parseInt(document.getElementById("sendCost").textContent );
+}
 
 
 
@@ -69,44 +136,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData( CART_INFO_TWO_PRODUCTS_URL ).then(function(resultObj){
         if (resultObj.status === "ok"){
 
-            var infoCart = resultObj.data.articles;
-            console.log(infoCart);
-            showCartInfo(infoCart);
-            
+            showCartInfo(resultObj.data.articles);
         }
-
-        var factorDolarUYU = 1/40;
-        var inputCount0 = document.getElementById("unitCount0");
-        var inputCount1 = document.getElementById("unitCount1");
-        
-        var sendCost = document.getElementById("sendCost").innerText;
-
-        var subtotal = 0;
-        subtotal = (inputCount0.value * (infoCart[0].unitCost * factorDolarUYU ) ) + (inputCount1.value * infoCart[1].unitCost);
-        document.getElementById("Subtotal").innerHTML = subtotal;
-        
-        var total = 0;
-        total = subtotal + parseInt(sendCost, 10);  //  Función parseInt()  necesaria para convertir un string a number
-        document.getElementById("Total").innerHTML = total;
-        
-
-        inputCount0.addEventListener("change", ()=> {
-            
-            subtotal = (inputCount0.value * (infoCart[0].unitCost * factorDolarUYU ) ) + (inputCount1.value * infoCart[1].unitCost);
-            document.getElementById("Subtotal").innerHTML = subtotal;
-            total = subtotal + parseInt(sendCost, 10);
-            document.getElementById("Total").innerHTML = total;
-
-        });
-
-        inputCount1.addEventListener("change", ()=> {
-            
-            subtotal = (inputCount0.value * (infoCart[0].unitCost * factorDolarUYU ) ) + (inputCount1.value * infoCart[1].unitCost);
-            document.getElementById("Subtotal").innerHTML = subtotal;
-            total = subtotal + parseInt(sendCost, 10);
-            document.getElementById("Total").innerHTML = total;
-
-        });
 
     });
 

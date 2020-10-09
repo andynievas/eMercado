@@ -160,6 +160,10 @@ a.custom-card:hover {
   text-align: center;
 }
 
+.responsiveFontV2{
+  font-size: 26px;
+}
+
 @media screen and (max-width: 767px) {
   #nombreDeUsuario{
     display: none;
@@ -169,11 +173,19 @@ a.custom-card:hover {
     font-size: 4vw;
   }
 
+  .responsiveFontV2{
+    font-size: 24px;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
   .responsiveFont{
     font-size: 6vw;
+  }
+
+  .responsiveFontV2{
+    font-size: 5vw;
   }
 }
 
