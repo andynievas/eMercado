@@ -73,7 +73,7 @@ function ponerPrecio(product){
     
     
     htmlContentToAppend = `
-        <a href="#" class="btn text-center responsiveFont p-0" title="El costo del producto puede variar según la ubicación del envío." data-toggle="popover" data-trigger="hover click" data-content="" style=" font-weight: bold; width: 100%; z-index: 1;">Precio: ` + product.currency + ` - `  + product.cost + `</a>
+        <a class="text-center responsiveFont d-block mx-4 p-0" title="El costo del producto puede variar según la ubicación del envío." data-toggle="popover" data-trigger="hover" data-content="" style="font-weight: bold; margin: auto; z-index: 1;">Precio: ` + product.currency + ` - `  + product.cost + `</a>
         `;
     // </div>
 
@@ -406,6 +406,29 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             showProductInfo(resultObj.data);
             productInfoResult = resultObj.data.relatedProducts;
+
+            /* Empieza una funcion para el pop OVER */
+
+            setTimeout(function() {
+                console.log("Esperar...");
+          
+                $(document).ready(function(){
+                  $('[data-toggle="popover"]').popover('show');
+              });
+        
+            //   userImage.load("img/cat9.jpg");
+          
+              }, 1000);
+        
+              setTimeout( () => {
+                //   .popover('disable');
+                  $(document).ready(function(){
+                    $('[data-toggle="popover"]').popover('hide');
+                });
+        
+              }, 5000);
+
+            /* Termina la funcion */
         }
 
     });
@@ -415,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     // var userImage = document.getElementById("jose").src;
     
     //  Funcion para el POP-OVER
-    setTimeout(function() {
+    /*setTimeout(function() {
         console.log("Esperar...");
   
         $(document).ready(function(){
@@ -432,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             $('[data-toggle="popover"]').popover('hide');
         });
 
-      }, 5000)
+      }, 5000);*/
 
 });
 
