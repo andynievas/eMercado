@@ -59,6 +59,14 @@ function showCartInfo (infoCart) {
                     allSubtotals.push(convertUYU_to_USD * infoCart[i].count * infoCart[i].unitCost);
                 }
                 
+            }else{
+
+                if(infoCart[i].currency === "USD"){
+                    allSubtotals[i] = ( infoCart[i].count * infoCart[i].unitCost);
+                }else if(infoCart[i].currency === "UYU"){
+                    allSubtotals[i] = (convertUYU_to_USD * infoCart[i].count * infoCart[i].unitCost);
+                }
+                
             }
 
         }
@@ -188,7 +196,7 @@ function showCartInfo (infoCart) {
                 <div class="col p-0">
                     <p class="responsiveFontV2 mx-0">Subtotal (USD)</p>
                 </div>
-                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Subtotal" style=" font-weight: bold;">${subtotal}</span></p> </div>
+                <div class ="col-3 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Subtotal" style=" font-weight: bold;">${subtotal}</span></p> </div>
 
             </div>
 
@@ -197,7 +205,7 @@ function showCartInfo (infoCart) {
                 <div class="col p-0">
                     <p class="responsiveFontV2 mx-0">Costo de envío (USD)</p>
                 </div>
-                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="sendCost" style=" font-weight: bold;">${costoDeEnvío}</span></p></div>
+                <div class ="col-3 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="sendCost" style=" font-weight: bold;">${costoDeEnvío}</span></p></div>
 
             </div>
 
@@ -206,7 +214,7 @@ function showCartInfo (infoCart) {
                 <div class="col p-0">
                     <p class="responsiveFontV2 mx-0">Total (USD)</p>
                 </div>
-                <div class ="col-3 col-md-2 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Total" style=" font-weight: bold;">0</span></p></div> 
+                <div class ="col-3 p-0"><p class="responsiveFontV2 mx-0 text-right" style=" font-weight: bold;" >$<span class="responsiveFontV2 mx-0 text-right" id="Total" style=" font-weight: bold;">0</span></p></div> 
 
             </div>
         </div>
@@ -215,28 +223,38 @@ function showCartInfo (infoCart) {
     
     </div>
 
-    <button id="confirmarCompra" class="btn btn-block btn-lg btn-primary" disabled onClick="confirmarCompra()">Confirmar compra</button>`;
+    <span class="d-block" tabindex="0" data-toggle="tooltip" id="tooltipDelBotonComprar" onClick="confirmarCompra()" title="Faltan completar algunos campos">
+        <button class="btn btn-block btn-lg btn-primary" id="confirmarCompra" style="pointer-events: none;" type="button" disabled>Confirmar compra</button>
+    </span>
+
+    `;
 
     document.getElementById("contenedorPrincipal").innerHTML = contentToAdd;
     subtotal_TagHTML = document.getElementById("Subtotal");
     subtotal_TagHTML.innerHTML = sumatoriaSubtotales();
     document.getElementById("Total").innerHTML = total();
+
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+
 }
 
 //   Termina la parte de agregar la información al HTML
 
 
 function removerArticulo(tagId){
+
     arrayDeArticulos.splice(tagId, 1);
-    console.log( arrayDeArticulos );
-    console.log( allSubtotals );
+    allSubtotals.splice(tagId, 1);
 
     primeraVezQueSeMuestra = false;
-    allSubtotals[tagId] = 0;
-    console.log( allSubtotals );
+    // allSubtotals[tagId] = 0;
     showCartInfo( arrayDeArticulos );
 
     calcularCostoEnvio( paymentMethod );
+    document.getElementById("Subtotal").innerHTML = sumatoriaSubtotales();
     document.getElementById("Total").innerHTML = total();
 }
 
@@ -401,7 +419,10 @@ function getPaymentMethod(esteTag){
     calcularCostoEnvio( paymentMethod );
     todosLosInputs = document.getElementsByClassName("form-control");
     if( validarCamposCompletos() && arrayDeArticulos.length>0 ){
+        let tooltip = document.getElementById("tooltipDelBotonComprar");
         document.getElementById("confirmarCompra").disabled = false;
+        tooltip.removeAttribute("data-original-title");
+        document.getElementById("confirmarCompra").style = "";
     }
 }
 
@@ -470,4 +491,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
+
+
+
 
