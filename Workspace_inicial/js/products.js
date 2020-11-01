@@ -22,22 +22,22 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <div>
-            <a href="product-info.html" class="mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
-                <div class="row p-0 m-0">
-                    <div class="p-0 col-12 col-sm-5 col-md-3"><center>
-                        <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 96%;"></center>
-                    </div>
-                    <div class="px-2 col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos</small>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="product-info.html" class="mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
+                    <div class="row p-0 m-0">
+                        <div class="p-0 col-12"><center>
+                            <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 96%;"></center>
                         </div>
-                        <p class="mb-1">` + product.description +`</p>
-                        <p class="m-0" style="font-family: 'Audiowide'; font-weight: bold;"> ` + product.currency + ` - ` + product.cost + ` </p>
+                        <div class="px-2 col">
+                            <div class=" w-100 justify-content-between">
+                                <h4 class="mb-1">`+ product.name +`</h4>
+                            </div>
+                            <p class="mb-1">` + product.description +`</p>
+                            <p class="m-0 p-0 text-muted">` + product.soldCount + ` vendidos</p>
+                            <p class="m-0" style="font-family: 'Audiowide'; font-weight: bold;"> ` + product.currency + ` - ` + product.cost + ` </p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             </div>
             `
         }

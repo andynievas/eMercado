@@ -164,6 +164,22 @@ a.custom-card:hover {
   font-size: 26px;
 }
 
+.espaciadoResponsive{
+  padding-left: 24px;
+  padding-right: 24px;
+
+}
+
+@media screen and (max-width: 992px) {
+
+  .espaciadoResponsive{
+    padding-left: 5px;
+    padding-right: 5px;
+  
+  }
+
+}
+
 @media screen and (max-width: 767px) {
   #nombreDeUsuario{
     display: none;
@@ -227,3 +243,42 @@ a.custom-card:hover {
   border: 3px solid green; 
 }
 
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sombraCaserita:hover, .sombraCaserita:focus{
+  -webkit-box-shadow: 0px 6px 30px 1px rgba(0,0,0,0.5);
+  -moz-box-shadow: px 6px 30px 1px rgba(0,0,0,0.5);
+  box-shadow: 0px 6px 30px 1px rgba(0,0,0,0.5);
+}
+
+
+.positionBotonClose{
+  position: absolute;
+  right: 0%;
+  z-index: 3;
+}
+
+
+
+/* Copiado de internet para dar un estilo a los INPUTS */
+
+/* Create a custom checkbox */
+.checkmark {
+  width: 100%;
+  background-color: whitesmoke;
+  color: black;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  width: 100%;
+  background-color: rgba(0, 132, 255, 0.501);
+}
+
+
+/* Termina el estilo personalizado */

@@ -4,7 +4,7 @@ const fondoColor = "rgb(227,245,244)";
 
 var productInfoResult;
 
-var arrayDelNuevoComentario = [];
+var arrayDelNuevoComentario = [{}];
 
 function setearColorFondo(){
     var largoG = document.getElementsByClassName("cambiarFondo");
@@ -153,72 +153,117 @@ function ponerEstrellas(score){
     return stars;
 }
 
-function addNewUserComentStructure(){
+function modalDeSweetAlert(){
+    // Mostrar modal de sweet Alert para nuevo comentario
+    Swal.fire({
+        title: '<strong>Que tal te pareció el producto?</strong>',
+        icon: 'info',
+        html:
+          '<div class="mb-2" id="starRating"></div>' +
+          '<div style="width: 100%;" id="textAreaParaComentarioNuevo" ></div> ',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          'Publicar',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          'Cerrar',
+        cancelButtonAriaLabel: 'Thumbs down'
+    }).then((result) => {
+        if (result.isConfirmed){
+            console.log('Funciona la promesa, estoy dentro del if true');
+            validarSiComentarioVacio();
+        }else{
+            console.log('Funciona la promesa, estoy dentro del else');
+        }
 
-    //  Añadir modal para escribir un comentario
-    let htmlToApend = 
-        `<!-- Comienza el modal -->    
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Comentario</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                <div class="form-check form-check-inline p-2" id="starRating">
-                </div>
-    
-                <div style="width: 100%;">
-                  <textarea class="form-control btn-light mb-3 border" id="textoDelComentario" placeholder="Escribe tu comentario aquí..." value="" style="display: block; width: 100%; height: 70px;"></textarea>
-                  <button class="btn btn-primary" id="sendComentario" style="width: 100%;">Enviar</button>
-                </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- Termina el modal -->`;
-
-    document.getElementById("modalContainer").innerHTML += htmlToApend;
+    });
 
     // Añadir estrellas en el modal
-    htmlToApend = `
-    <div >
-        <label class="form-check-label" for="inlineRadio1" style="padding-right: 30px; display: block;"><i class="fa fa-star checked"></i>1</label>
-        <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1">
+    let htmlToApend = `
+    <div class="d-flex">
+        <label class="container m-0 p-0" for="inlineRadio1">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1">
+            <p class="checkmark m-0 py-2" style="height: 40px; border-radius: 10px 0px 0px 10px;" > <i class="fa fa-star checked"></i> 1</p>
+        </label>
+
+        <label class="container m-0 p-0" for="inlineRadio2">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2">
+            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 2</p>
+        </label>
+
+        <label class="container m-0 p-0" for="inlineRadio3">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3">
+            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 3</p>
+        </label>
+
+        <label class="container m-0 p-0" for="inlineRadio4">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4">
+            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 4</p>
+        </label>
+
+        <label class="container m-0 p-0" for="inlineRadio5">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked="checked">
+            <p class="checkmark m-0 py-2" style="height: 40px; border-radius: 0px 10px 10px 0px;" > <i class="fa fa-star checked"></i> 5</p>
+        </label>
     </div>
-    <div>
-        <label class="form-check-label" for="inlineRadio2" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>2</label>
-        <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2">
-    </div>
-    <div>
-        <label class="form-check-label" for="inlineRadio3" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>3</label>
-        <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3">
-    </div>
-    <div>
-        <label class="form-check-label" for="inlineRadio4" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>4</label>
-        <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4">
-    </div>
-    <div>
-        <label class="form-check-label" for="inlineRadio5" style="padding-right: 30px; display: block;" ><i class="fa fa-star checked"></i>5</label>
-        <input class="form-check-input" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked>
-    </div> ` ;
+    `;
 
     document.getElementById("starRating").innerHTML = htmlToApend;
+
+    htmlToApend = `
+        <textarea class="form-control btn-light mb-3 border" id="textoDelComentario" placeholder="Escribe tu comentario aquí..." value="" style="display: block; background-color: rgb(220,220,220); height: 70px;"></textarea>
+    `;
+
+    document.getElementById("textAreaParaComentarioNuevo").innerHTML = htmlToApend;
+
+}
+
+function validarSiComentarioVacio(){
+    //  Añadir comentario nuevo
+    var comentarioToAppend = document.getElementById("textoDelComentario");
+
+    if(comentarioToAppend.value != ""){
+        var hoy = new Date();
+        var score = document.querySelector('input[name = "rankingEstrellas"]:checked').value;
+        arrayDelNuevoComentario[0] = {"user": localStorage.getItem("user") , "description": comentarioToAppend.value, "dateTime": hoy.getFullYear() + '-' + ( hoy.getMonth() +1 ) + '-' + hoy.getDate() + ' ' + hoy.getHours() + ':' + hoy.getMinutes(), "score": score };
+
+        addCardColumn(1, arrayDelNuevoComentario);  // Le paso el valor 1 como parametro porque es el largo del array con los detalles del nuevo comentario
+        
+        comentarioToAppend.value = "";
+
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Comentario publicado',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    }else{
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Comentario vacío',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+}
+
+function addNewUserComentStructure(){
+    
+    //  Añadir modal de Bootstrap para realizar un nuevo comentario
+    let htmlToApend = `
+        <!-- Comienza el modal -->    
+
+      <!-- Termina el modal -->`;//data-dismiss="modal"
 
     // Añadir boton que activa el modal
     htmlToApend = `
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary" onClick="modalDeSweetAlert()">
       Presiona aquí para realizar un comentario
     </button>`;
     document.getElementById("seccionComentario").innerHTML += htmlToApend;
@@ -341,27 +386,7 @@ function showProductInfo(product){
 
     });
 
-    //  Añadir comentario nuevo
-    var comentarioNuevo = document.getElementById("sendComentario");
 
-    comentarioNuevo.addEventListener("click", function(){
-        var comentarioToAppend = document.getElementById("textoDelComentario");
-        
-
-        if(comentarioToAppend.value != ""){
-            
-            var hoy = new Date();
-            
-            var score = document.querySelector('input[name = "rankingEstrellas"]:checked').value;
-
-            arrayDelNuevoComentario[0] = {"user": localStorage.getItem("user") , "description": comentarioToAppend.value, "dateTime": hoy.getFullYear() + '-' + ( hoy.getMonth() +1 ) + '-' + hoy.getDate() + ' ' + hoy.getHours() + ':' + hoy.getMinutes(), "score": score };
-
-            addCardColumn(1, arrayDelNuevoComentario);  // Le paso el valor 1 como parametro porque es el largo del array con los detalles del nuevo comentario
-            
-            comentarioToAppend.value = "";
-        }else alert("Comentario vacío");
-
-    });
 
 }
 

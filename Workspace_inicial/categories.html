@@ -13,19 +13,18 @@
     <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+
   </head>
+
   <body>
+
     <nav class="site-header sticky-top py-1 shadow" style="background-color: rgb(30,70,90); ">
       <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
         <a class="p-2 d-none d-md-inline-block btn fonditoo" href="index.html"><i class="fas fa-home"></i> Inicio</a>
         <a class="p-2 d-none d-md-inline-block btn fonditoo" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
         <a class="p-2 d-none d-md-inline-block btn fonditoo" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
         <a class="p-2 d-none d-md-inline-block btn fonditoo" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
-        
-        
-
       </div>
-
     </nav>
 
     <main role="main" class="pb-5">
@@ -33,7 +32,7 @@
             <h2 style="font-family: 'Architects Daughter'; font-size: 40px; font-weight: bold;">Categorías</h2>
             <p class="lead" style="margin: 5px;">Verás aquí todas las categorías del sitio.</p>
         </div>
-        <div class="container p-5">
+        <div class="container px-5">
             <div class="row">
                 <div class="col text-right">
                     <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
@@ -50,29 +49,25 @@
                 </div>
             </div>
             <div class="row m-0 p-0">
-                <!-- <div class="row mb-1 container p-0"> -->
-                  <!-- <div class="row container p-0 m-0"> -->
-                    <div class="col-md-3 ">
-                      <p class="font-weight-normal text-right my-2">Cant.</p>
-                    </div>
-                    <div class="col-6 col-md-3 ">
-                      <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-                    </div>
-                    <div class="col-6 col-md-3 ">
-                      <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-                    </div>
-                    <div class="col-md-3 p-0">
-                      <div class="btn-group d-flex" role="group">
-                        <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                        <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-                      </div>
-                    </div>
-                  <!-- </div> -->
-                <!-- </div> -->
+              <div class="col col-md-5 ">
+                <p class="font-weight-normal text-right my-2">Cant.</p>
+              </div>
+              <div class="col-5 col-md-2 ">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              </div>
+              <div class="col-5 col-md-2 ">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              </div>
+              <div class="col-md-3 p-0">
+                <div class="btn-group d-flex" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                  <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                </div>
+              </div>
             </div>
             <div class="row">
-                <div class="list-group" id="cat-list-container">
-                </div>
+              <div class="list-group" id="cat-list-container">
+              </div>
             </div>
         </div>
     </main>

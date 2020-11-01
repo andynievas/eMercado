@@ -47,15 +47,17 @@
 </head>
 
 <body class="mb-4">
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
-      <a class="p-2 d-none d-md-inline-block btn fonditoo" href="index.html"><i class="fas fa-home"></i> Inicio</a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+  <div class="site-header sticky-top py-1 bg-light">
 
+    <div class="container d-flex justify-content-between">
+      <div class="col-5 d-flex justify-content-between" id="BarraNav"></div>
+      <div class="col-2 " id="navBar"></div>
+      <div class="col-5 d-flex justify-content-between " id="barraBusq"></div>
     </div>
-  </nav>
+
+  </div>
+
+  <nav class="d-none" style="display: none;"></nav>
 
   <div class="container mt-4" id="contenedorPrincipal">
     <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
@@ -77,8 +79,9 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
+  
   <script src="js/factura.js"></script>
+  <script src="js/init.js"></script>
 </body>
 
 </html>
