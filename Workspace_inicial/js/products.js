@@ -23,7 +23,7 @@ function showProductsList(){
 
             htmlContentToAppend += `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="product-info.html" class="mb-2 list-group-item list-group-item-action shadow" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
+                <a href="product-info.html" class="mb-2 list-group-item list-group-item-action sombraCaserita" id="`+product.id+`" style="padding-left: 1vw; padding-right: 1vw;" onclick="saveId(this.id)">
                     <div class="row p-0 m-0">
                         <div class="p-0 col-12"><center>
                             <img src="` + product.imgSrc + `" alt="` + product.name + `" class="img-thumbnail" style="width: 96%;"></center>

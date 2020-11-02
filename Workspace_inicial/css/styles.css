@@ -7,13 +7,13 @@
 }
 
 .jumbotron {
-  height: 50vh;
+  height: 20vw;
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
   background-size: cover;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
@@ -21,6 +21,11 @@
 
 .tituloDeLaCategoria{
   font-size: 36px;
+}
+
+.paddingResponsive{
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 @media (min-width: 768px) {
@@ -31,6 +36,11 @@
 
   .tituloDeLaCategoria{
     font-size: 26px;
+  }
+
+  .paddingResponsive{
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 

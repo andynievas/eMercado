@@ -60,16 +60,16 @@ function addUserDropdown(){
       <button class="btn btn-lg btn-secondary border" style="width: 70px; height: 50px;" type="button" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
         <i class="fas fa-bars" style="font-size: 30px; padding-top: 1px;"></i>
       </button>
-      <a href="index.html" class="text-right w-100"><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="width: 250px; height: 50px; border-radius: 8px;"> </button> </a>
+      <a href="index.html" class="text-right w-100"><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="width: 70vw; max-width: 250px; height: 50px; border-radius: 8px;"> </button> </a>
     </p>
   
-    <div class="collapse" id="collapseExampleV2">
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="categories.html">Categorías</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="products.html">Productos</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="sell.html">Vender</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="cart.html" id="miCarritoInHamburgerMenu" >Mi carrito </a>
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="my-profile.html">Mi perfil</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary" href="index.html">Cerrar sesión</a>
+    <div class="collapse pt-2" id="collapseExampleV2">
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="categories.html">Categorías</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="products.html">Productos</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="sell.html">Vender</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="cart.html" id="miCarritoInHamburgerMenu" >Mi carrito </a>
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="my-profile.html">Mi perfil</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary my-3" onClick="cerrarSesion()">Cerrar sesión</a>
     </div>
 
   </div>`;
@@ -97,7 +97,7 @@ function addUserDropdown(){
         </div>
       </a>
 
-      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo sombraCaserita" href="index.html" id="logOut">
+      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo sombraCaserita" href="index.html" onClick="cerrarSesion()">
         <div class=" p-0 d-none d-md-inline-block btn">
           <span  class="fas fa-sign-out-alt" style="width: 40px; font-size: 21px;"></span>
           <span style="width: 80%; font-size: 21px;">Cerrar sesión</span>
@@ -131,17 +131,27 @@ document.addEventListener("DOMContentLoaded", function(e){
   if(finalUser !== null){
 
     
-    if( finalUser.includes('.com') ){
-      finalUser = finalUser.slice(0,finalUser.length-4) ;
-    }
+    // El siguiente 'if' verifica si el correo ingresado contiene '.com' y lo quita
+    // if( finalUser.includes('.com') ){
+    //   finalUser = finalUser.slice(0,finalUser.length-4) ;
+    // }
 
     if(finalUser.length >= 15){
-      finalUser = finalUser.slice(0, 8) + '...' + finalUser.slice(finalUser.length-6, finalUser.length);
+      if( finalUser.includes('.com') ){
+        finalUser = finalUser.slice(0,finalUser.length-4) ;
+      }
+      if( finalUser.includes('@') ){
+        console.log(finalUser.indexOf('@'));
+        finalUser = finalUser.slice( 0 , finalUser.indexOf('@') );
+      }
+      if(finalUser.length > 9){
+        finalUser = finalUser.slice(0, 9) + '...'; /* + finalUser.slice(finalUser.length-6, finalUser.length); //Esto es para concatenarle la otra parte del correo (osea la parte del @)*/
+      }
     }
   
     if( localStorage.getItem('user')!=null ){
       setTimeout(  ()=> {
-        var currentUser = document.getElementById("userSession");
+        let currentUser = document.getElementById("userSession");
         if(currentUser != null){
         currentUser.innerHTML = finalUser + `<img src="https://thispersondoesnotexist.com/image" class="ml-2" style="width: 38px; border-radius: 50%; margin-top: 1px; margin-bottom: 1px;">
         `;
@@ -158,15 +168,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
-var cerrarSession = document.getElementById("logOut");
-var indicadorDeUserName = document.getElementById("userSession");
+// var indicadorDeUserName = getElement("userSession");
 
-if(indicadorDeUserName !== null){
-
-  cerrarSession.addEventListener("click", function(){
+function cerrarSesion(){
+  if( document.getElementById("userSession") ){
+    
     localStorage.removeItem("user");
     location.replace("index.html");
-  });
-
+  }
 }
 

@@ -143,11 +143,15 @@ function showCartInfo (infoCart) {
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex"><input type="radio" class="my-2 mr-1" id="xpres" name="envio" onChange="getPaymentMethod(this)" />
-                                        <label for="xpres"><p style="font-size: 20px;">Express (5-8 días) - Costo del 7% sobre el subtotal.</p></label></div>
+                                        <label for="xpres"><p style="font-size: 20px;">Express (5-8 días) - Costo del 7% sobre el subtotal</p></label></div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex"><input type="radio" class="my-2 mr-1" id="standard" name="envio" onChange="getPaymentMethod(this)">
-                                        <label for="standard"><p style="font-size: 20px;">Standard (12 a 15 días) - Costo del 5% sobre el subtotal.</p></label></div>
+                                        <label for="standard"><p style="font-size: 20px;">Standard (12 a 15 días) - Costo del 5% sobre el subtotal</p></label></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-flex"><input type="radio" class="my-2 mr-1" id="retiroLocal" name="envio" onChange="getPaymentMethod(this)">
+                                        <label for="retiroLocal"><p style="font-size: 20px;">Retiro en el local del vendedor</p></label></div>
                                     </div>
                                 </div>
                             </div>
@@ -417,6 +421,8 @@ function calcularCostoEnvio( paymentMethod ){
         porcentajdeCostoEnvio = 0.07;
     }else if(paymentMethod === "standard"){
         porcentajdeCostoEnvio = 0.05;
+    }else if(paymentMethod === "retiroLocal"){
+        porcentajdeCostoEnvio = 0;
     }
 
     costoDeEnvío = Math.round( (subtotal * porcentajdeCostoEnvio) * 100) / 100 ;
