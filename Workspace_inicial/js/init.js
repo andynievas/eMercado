@@ -46,38 +46,31 @@ function addUserDropdown(){
 
   var navBar = document.getElementsByTagName("nav")[0];
   let htmlToAppend = `
-
-  <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
-      <a href="index.html" class="d-none d-md-inline-block" ><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="height: 40px; border-radius: 8px;"> </button> </a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-      <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
-  </div>
-
-
-  <div class="px-4" id="menuDelCostado">
-  <p class="m-0" style="text-align: right;">
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
-      Ver más opciones <i class="fas fa-bars"></i>
-    </button>
-  </p>
-
-  <div class="collapse" id="collapseExampleV2">
-    <div class="menuDelCostado row m-0">
-
-      <div class="col"></div>
-      
-      <div class="col-5 col-sm-4 col-md-4">
-        <a href="index.html">Inicio</a>
-        <a href="categories.html">Categorías</a>
-        <a href="products.html">Productos</a>
-        <a href="sell.html">Vender</a>
-        <a href="cart.html" id="miCarritoInHamburgerMenu" >Mi carrito </a>
-        <a href="my-profile.html">Mi perfil</a>
-      </div>
-      
+    <!-- BARRA DE NAVEGACION -->
+    <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
+        <a href="index.html" class="d-none d-md-inline-block" ><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="height: 40px; border-radius: 8px;"> </button> </a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
     </div>
-  </div>
+
+  <div class="container my-1" id="menuDelCostado">
+
+    <p class="d-flex m-0">
+      <button class="btn btn-lg btn-secondary border" style="width: 70px; height: 50px;" type="button" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
+        <i class="fas fa-bars" style="font-size: 30px; padding-top: 1px;"></i>
+      </button>
+      <a href="index.html" class="text-right w-100"><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="width: 250px; height: 50px; border-radius: 8px;"> </button> </a>
+    </p>
+  
+    <div class="collapse" id="collapseExampleV2">
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="categories.html">Categorías</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="products.html">Productos</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="sell.html">Vender</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="cart.html" id="miCarritoInHamburgerMenu" >Mi carrito </a>
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="my-profile.html">Mi perfil</a>
+      <a class="hamburgerMenu bg-dark btn btn-primary" href="index.html">Cerrar sesión</a>
+    </div>
 
   </div>`;
 

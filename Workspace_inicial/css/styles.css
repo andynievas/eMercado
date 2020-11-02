@@ -219,11 +219,14 @@ a.custom-card:hover {
   }
 }
 
-.menuDelCostado a{
+.hamburgerMenu{
   display: block;
-  color: white;
-  padding: 10px;
-  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background-color: burlywood;
+  text-decoration: none;
 }
 
 .vertical-center {  /* clase para alinear verticalmente (se aplica al contenedor de los objetos) */
