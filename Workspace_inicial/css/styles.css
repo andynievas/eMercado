@@ -73,7 +73,6 @@ footer p {
 }
 
 .site-header a {
-  color: white;
   transition: ease-in-out color .15s;
 }
 
@@ -158,10 +157,6 @@ a.custom-card:hover {
   color: orange;
 }
 
-.fonditoo:hover {
-  background-color: rgb(105, 213, 255);
-}
-
 .responsiveFont{
   font-size: 26px;
 }
@@ -235,7 +230,7 @@ a.custom-card:hover {
   padding-bottom: 16px;
   margin-top: 6px;
   margin-bottom: 6px;
-  background-color: burlywood;
+  background-color: rgb(218, 199, 174);
   text-decoration: none;
 }
 
@@ -287,11 +282,76 @@ img.center {
 }
 
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a blue background 
 .container input:checked ~ .checkmark {
   width: 100%;
-  background-color: rgba(0, 132, 255, 0.501);
+  background-color: rgba(233, 244, 255, 0);
+}*/
+
+/* Es el mismo estilo pero para otra cosa jaja */
+
+/*.checkmarkStars {
+  background-color: whitesmoke;
+}*/
+
+
+/* When the checkbox is checked, add a blue background */
+/* .container input:checked ~ .checkmark {
+  -webkit-box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
+  -moz-box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
+  box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
+} */
+
+.pintado{
+  -webkit-box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
+  -moz-box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
+  box-shadow: inset 0px 0px 12px 4px rgba(238,255,0,1);
 }
 
 
 /* Termina el estilo personalizado */
+
+
+.pointer {cursor: pointer;}
+
+.nonChecked{
+  color: grey;
+}
+
+
+.textOscuro{
+  /* background-color: rgb(84, 177, 189); */
+  background-color: rgb(235, 235, 235) ;
+  /* color: rgb(30,70,110); */
+  color: rgb(190, 15, 91);
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.colorClaro{
+  color: whitesmoke;
+}
+
+.transicionDeColor{
+  font-weight: bold;
+  transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
+}
+
+.btn-eMercado:hover {
+  /* background-color: rgb(71, 137, 163); */
+  background-color: whitesmoke;
+  color: rgb(214, 28, 108);
+  transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
+}
+
+.btn-LogOut:hover{
+  /* background-color: red; */
+  color: red;
+  transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
+
+}
+
+.btn-dark{
+  transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out !important;
+}
+

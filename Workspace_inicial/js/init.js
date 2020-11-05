@@ -49,9 +49,9 @@ function addUserDropdown(){
     <!-- BARRA DE NAVEGACION -->
     <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
         <a href="index.html" class="d-none d-md-inline-block" ><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="height: 40px; border-radius: 8px;"> </button> </a>
-        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-        <a class="p-2 d-none d-md-inline-block btn fonditoo sombraCaserita" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
     </div>
 
   <div class="container my-1" id="menuDelCostado">
@@ -64,12 +64,12 @@ function addUserDropdown(){
     </p>
   
     <div class="collapse pt-2" id="collapseExampleV2">
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="categories.html">Categorías</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="products.html">Productos</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="sell.html">Vender</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="cart.html" id="miCarritoInHamburgerMenu" >Mi carrito </a>
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" href="my-profile.html">Mi perfil</a>
-      <a class="hamburgerMenu bg-dark btn btn-primary my-3" onClick="cerrarSesion()">Cerrar sesión</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="cart.html" id="miCarritoInHamburgerMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="my-profile.html"><i class="fas fa-user-circle"></i> Mi perfil</a>
+      <a class="hamburgerMenu btn btn-danger my-0 py-2 textOscuro" href="#" onClick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
     </div>
 
   </div>`;
@@ -78,29 +78,29 @@ function addUserDropdown(){
 
   htmlToAppend = `<!-- Comienza el boton desplegable -->
   <div class="dropdown" id="nombreDeUsuario">
-    <button class="btn btn-primary dropdown-toggle alert-info px-1 py-0" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-danger dropdown-toggle alert-info px-1 py-0" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Ingresar
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
       
-      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo sombraCaserita" href="cart.html">
-        <div class=" p-0 d-none d-md-inline-block btn" id="miCarritoInDropDown" >
-          <span class="fas fa-shopping-cart" style="width: 40px; font-size: 21px;"></span>
-          <span style="width: 80%; font-size: 21px;"> Mi carrito</span>
+      <a class="dropdown-item p-0 d-none d-md-inline-block " href="cart.html">
+        <div class=" py-0 px-3 d-none d-md-inline-block btn btn-block btn-eMercado transicionDeColor text-left sombraCaserita" id="miCarritoInDropDown" >
+          <span class="fas fa-shopping-cart text-right mr-1" style="width: 25px; font-size: 21px;"></span>
+          <span style="width: 100%; font-size: 21px;"> Mi carrito</span>
         </div>
       </a>
 
-      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo sombraCaserita" href="my-profile.html">
-        <div class=" p-0 d-none d-md-inline-block btn">
-          <span  class="fas fa-user-circle" style="width: 40px; font-size: 21px;"></span>
-          <span style="width: 80%; font-size: 21px;"> Mi perfil</span>
+      <a class="dropdown-item p-0 d-none d-md-inline-block " href="my-profile.html">
+        <div class=" py-0 px-3 d-none d-md-inline-block btn btn-block btn-eMercado transicionDeColor text-left sombraCaserita">
+          <span class="fas fa-user-circle text-right mr-1" style="width: 25px; font-size: 21px;"></span>
+          <span style="width: 100%; font-size: 21px;"> Mi perfil</span>
         </div>
       </a>
 
-      <a class="dropdown-item p-1 d-none d-md-inline-block btn fonditoo sombraCaserita" href="index.html" onClick="cerrarSesion()">
-        <div class=" p-0 d-none d-md-inline-block btn">
-          <span  class="fas fa-sign-out-alt" style="width: 40px; font-size: 21px;"></span>
-          <span style="width: 80%; font-size: 21px;">Cerrar sesión</span>
+      <a class="dropdown-item p-0 d-none d-md-inline-block " href="index.html" onClick="cerrarSesion()">
+        <div class=" py-0 px-3 d-none d-md-inline-block btn btn-block btn-LogOut transicionDeColor text-left sombraCaserita">
+          <span class="fas fa-sign-out-alt text-right mr-1" style="width: 25px; font-size: 21px;"></span>
+          <span style="width: 80%; font-size: 21px;" >Cerrar sesión</span>
         </div>
       </a>
       
@@ -120,6 +120,23 @@ function addUserDropdown(){
 }
 
 addUserDropdown();
+
+function pintarImgProfile(){
+  if( localStorage.getItem('imgProfile') ){
+    return localStorage.getItem('imgProfile');
+  }else{
+    return 'https://thispersondoesnotexist.com/image';
+  }
+}
+
+
+function logOut_Animations(){
+
+
+
+}
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -151,12 +168,12 @@ document.addEventListener("DOMContentLoaded", function(e){
   
     if( localStorage.getItem('user')!=null ){
       setTimeout(  ()=> {
-        let currentUser = document.getElementById("userSession");
-        if(currentUser != null){
-        currentUser.innerHTML = finalUser + `<img src="https://thispersondoesnotexist.com/image" class="ml-2" style="width: 38px; border-radius: 50%; margin-top: 1px; margin-bottom: 1px;">
+        let currentUser = document.getElementById("userSession"); //console.log(currentUser);
+        if(currentUser){
+        currentUser.innerHTML = finalUser + `<img id="imgProfileInDropDown" src="${pintarImgProfile()}" alt="imgProfile" class="ml-2" style="width: 38px; border-radius: 50%; margin-top: 1px; margin-bottom: 1px;">
         `;
       }
-    }, 0);
+    }, 100);
 
     }
 
@@ -171,10 +188,16 @@ document.addEventListener("DOMContentLoaded", function(e){
 // var indicadorDeUserName = getElement("userSession");
 
 function cerrarSesion(){
-  if( document.getElementById("userSession") ){
+
+  //  Comienzan las animaciones para cerrar Sesion
+  //  Terminan las animaciones
+
+  if(localStorage.getItem("idProduct")){localStorage.removeItem("idProduct");}
+  if(localStorage.getItem("user") ){localStorage.removeItem("user");}
+  if(localStorage.getItem("userProfile") ){localStorage.removeItem("userProfile");}
+  if( localStorage.getItem("imgProfile") ){localStorage.removeItem("imgProfile");}
+  location.replace("index.html");
     
-    localStorage.removeItem("user");
-    location.replace("index.html");
-  }
 }
+
 

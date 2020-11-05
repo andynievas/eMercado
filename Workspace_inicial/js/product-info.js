@@ -110,7 +110,7 @@ function addCardInGroup(array, posArray){
         <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3 px-0 mb-2">
             <div class="card-body px-4">
                 <h5 class="card-title" >` + ponerEstrellas(array[posArray].score) + `</h5>
-                <h5 class="card-title"><img src="https://thispersondoesnotexist.com/image" style="width: 50px; margin-right: 15px; border-radius: 50%;">` + array[posArray].user + `</h5>
+                <h5 class="card-title"><img src="https://thispersondoesnotexist.com/image" name="${array[posArray].user}" style="width: 50px; margin-right: 15px; border-radius: 50%;">` + array[posArray].user + `</h5>
                 <p class="card-text">` + array[posArray].description + `.</p>
             </div>
             <div class="card-footer">
@@ -153,6 +153,21 @@ function ponerEstrellas(score){
     return stars;
 }
 
+function colorearEstrellas(id){
+    id = id.slice( id.length - 1 , id.length );
+    // var pintar = document.getElementsByClassName('checkmark');
+    var pintar = document.getElementsByClassName('rating');
+    for(let i=0; i<pintar.length; i++){
+        if(i < id){
+            // pintar[i].className = ' checkmark m-0 py-2 pintado ';
+            pintar[i].className = ' fa fa-star checked rating animate__animated animate__flip ';
+        }else{
+            // pintar[i].className = 'checkmark m-0 py-2';
+            pintar[i].className = ' fa fa-star rating nonChecked animate__animated animate__headShake ';
+        }
+    }
+}
+
 function modalDeSweetAlert(){
     // Mostrar modal de sweet Alert para nuevo comentario
     Swal.fire({
@@ -172,10 +187,7 @@ function modalDeSweetAlert(){
         cancelButtonAriaLabel: 'Thumbs down'
     }).then((result) => {
         if (result.isConfirmed){
-            console.log('Funciona la promesa, estoy dentro del if true');
             validarSiComentarioVacio();
-        }else{
-            console.log('Funciona la promesa, estoy dentro del else');
         }
 
     });
@@ -183,29 +195,29 @@ function modalDeSweetAlert(){
     // Añadir estrellas en el modal
     let htmlToApend = `
     <div class="d-flex">
-        <label class="container m-0 p-0" for="inlineRadio1">
-            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1">
-            <p class="checkmark m-0 py-2" style="height: 40px; border-radius: 10px 0px 0px 10px;" > <i class="fa fa-star checked"></i> 1</p>
+        <label class="container m-0 p-0 pointer" for="inlineRadio1">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio1" value="1" onClick="colorearEstrellas(this.id)">
+            <p class="checkmark m-0 py-2 sombraCaserita " style="height: 40px; border-radius: 10px 0px 0px 10px;" > <i class="fa fa-star checked rating"></i></p>
         </label>
 
-        <label class="container m-0 p-0" for="inlineRadio2">
-            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2">
-            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 2</p>
+        <label class="container m-0 p-0 pointer" for="inlineRadio2">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio2" value="2" onClick="colorearEstrellas(this.id)">
+            <p class="checkmark m-0 py-2 sombraCaserita " style="height: 40px;" > <i class="fa fa-star checked rating"></i></p>
         </label>
 
-        <label class="container m-0 p-0" for="inlineRadio3">
-            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3">
-            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 3</p>
+        <label class="container m-0 p-0 pointer" for="inlineRadio3">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio3" value="3" onClick="colorearEstrellas(this.id)">
+            <p class="checkmark m-0 py-2 sombraCaserita " style="height: 40px;" > <i class="fa fa-star checked rating"></i></p>
         </label>
 
-        <label class="container m-0 p-0" for="inlineRadio4">
-            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4">
-            <p class="checkmark m-0 py-2" style="height: 40px;" > <i class="fa fa-star checked"></i> 4</p>
+        <label class="container m-0 p-0 pointer" for="inlineRadio4">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio4" value="4" onClick="colorearEstrellas(this.id)">
+            <p class="checkmark m-0 py-2 sombraCaserita " style="height: 40px;" > <i class="fa fa-star checked rating"></i></p>
         </label>
 
-        <label class="container m-0 p-0" for="inlineRadio5">
-            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked="checked">
-            <p class="checkmark m-0 py-2" style="height: 40px; border-radius: 0px 10px 10px 0px;" > <i class="fa fa-star checked"></i> 5</p>
+        <label class="container m-0 p-0 pointer" for="inlineRadio5">
+            <input class="form-check-input d-none" type="radio" name="rankingEstrellas" id="inlineRadio5" value="5" checked="checked" onClick="colorearEstrellas(this.id)" >
+            <p class="checkmark m-0 py-2 sombraCaserita " style="height: 40px; border-radius: 0px 10px 10px 0px;" > <i class="fa fa-star checked rating"></i></p>
         </label>
     </div>
     `;
@@ -232,6 +244,8 @@ function validarSiComentarioVacio(){
         addCardColumn(1, arrayDelNuevoComentario);  // Le paso el valor 1 como parametro porque es el largo del array con los detalles del nuevo comentario
         
         comentarioToAppend.value = "";
+
+        ponerImgUserInComment();
 
         Swal.fire({
             position: 'center',
@@ -380,7 +394,6 @@ function showProductInfo(product){
     
     getJSONData(PRODUCTS_AWS_URL).then(function(resultObjRelated){
         if (resultObjRelated.status === "ok"){
-            console.log(resultObjRelated.data);
             ponerProductosRelacionados(resultObjRelated.data);
         }
 
@@ -416,8 +429,21 @@ function addPopOver(){
     document.getElementById("addPopOver").innerHTML += paraAnadir;
 }
 
+function pintarImgProfile(){
+    if( localStorage.getItem('imgProfile') ){
+      return localStorage.getItem('imgProfile');
+    }else{
+      return 'https://thispersondoesnotexist.com/image';
+    }
+}
 
-
+function ponerImgUserInComment(){
+    let comentarioPersonal = document.getElementsByName(localStorage.getItem('user') );
+    for(let i=0; i<comentarioPersonal.length; i++){
+        comentarioPersonal[i].src = pintarImgProfile();
+        console.log('Estoy dentro de poner img usuario en comentario nuevo');
+    }
+}
 
 
     
@@ -458,29 +484,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     });
 
-
-
-    // var userImage = document.getElementById("jose").src;
-    
-    //  Funcion para el POP-OVER
-    /*setTimeout(function() {
-        console.log("Esperar...");
-  
-        $(document).ready(function(){
-          $('[data-toggle="popover"]').popover('show');
-      });
-
-    //   userImage.load("img/cat9.jpg");
-  
-      }, 1000);
-
-      setTimeout( () => {
-        //   .popover('disable');
-          $(document).ready(function(){
-            $('[data-toggle="popover"]').popover('hide');
-        });
-
-      }, 5000);*/
 
 });
 
