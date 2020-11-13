@@ -9,7 +9,7 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 // Nuevo link para products_Info que tiene el identificador:
 // const PRODUCTS_AWS_URL = "http://ec2-18-191-222-30.us-east-2.compute.amazonaws.com:3000/product/";
 // Ya que no funciona en GITHUB usaré uno casero:
-const PRODUCTS_AWS_URL = 'https://github.com/andynievas/eMercado/Workspace_inical/linkProducts.json';
+const PRODUCTS_AWS_URL = 'https://github.com/andynievas/eMercado/linkProducts.json';
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
