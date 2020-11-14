@@ -311,18 +311,35 @@ function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del p
     document.getElementById("productsRelacionados").innerHTML = agregarARelated;
 }
 
-function ponerProductosRelacionados(arrayDeProducts){    //  Incluir seccion y formato para los productos relacionados
+function ponerProductosRelacionados(arrayDeProducts, arrProductsRel){    //  Incluir seccion y formato para los productos relacionados
+    console.log(arrayDeProducts); // El array completo con todos los autos
+    console.log(arrProductsRel); // El array con los autos relacionados
     var divToAppend = `
     
     <div class="container p-0" id="productsRelacionados" ></div>
     
     `;
-    // for(let jota=0; jota<productInfoResult.length; jota++){
-        document.getElementById("Related").innerHTML += divToAppend;
-    // }
 
-    ponerInfoDeRelated(arrayDeProducts);
-    // setearColorFondo();
+    document.getElementById("Related").innerHTML += divToAppend;
+
+    var agregarARelated = "";
+    
+    for(let n=0; n<arrProductsRel.length; n++){
+        agregarARelated += 
+        
+        `<div class="m-1" style="width: 160px; display: inline-block;">
+            <a href="product-info.html" id="` + arrayDeProducts[arrProductsRel[n]].id + `" onclick="saveId(`+ arrayDeProducts[arrProductsRel[n]].id +`)" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
+                <img style="width: 100%;" src=" ` + arrayDeProducts[arrProductsRel[n]].imgSrc + ` ">
+                <h6 class="p-2 m-0" style="font-size: 20px;">`
+                    + arrayDeProducts[arrProductsRel[n]].name + 
+                `</h6>
+                <h6>
+                    <span class=" p-2 m-0" style="font-size: 15px;">` + arrayDeProducts[arrProductsRel[n]].currency+` - `+arrayDeProducts[arrProductsRel[n]].cost + `</span>
+                </h6>
+            </a>
+        </div>`;
+    }
+    document.getElementById("productsRelacionados").innerHTML = agregarARelated;
 }
 
 function ponerComentarios(largo, resultComentarios){   // y tambien las estrellas
@@ -391,31 +408,14 @@ function showProductInfo(product){
     });
 
     addNewUserComentStructure();
-    
-    getJSONData(PRODUCTS_AWS_URL).then(function(resultObjRelated){
+    console.log(product.relatedProducts);
+    getJSONData(PRODUCTS_AWS_URL + 'linkProducts.json').then(function(resultObjRelated){
         if (resultObjRelated.status === "ok"){
-            ponerProductosRelacionados(resultObjRelated.data);
+            ponerProductosRelacionados(resultObjRelated.data, product.relatedProducts);
         }
 
     });
 
-
-
-}
-
-//  Funcion para buscar el json correspondiente a cada producto por su identificador
-function incluyeId(url){
-    var urLdeBusqueda = url.href;
-    var posIndex = "";
-
-
-    if( urLdeBusqueda.includes( "?id" ) || urLdeBusqueda.includes( "&id" ) ){
-
-        posIndex = urLdeBusqueda.indexOf("?id", 0);
-        urLdeBusqueda = urLdeBusqueda.slice(posIndex+4, urLdeBusqueda.length);
-        
-        return urLdeBusqueda;
-    }
 }
 
 function addPopOver(){
@@ -445,17 +445,32 @@ function ponerImgUserInComment(){
     }
 }
 
+// Funcion que retorna la posicion del array en donde se encuentra una CLAVE
+function encontrarID(array, id){
+    for(let i=0; i<array.length; i++){
+        if(array[i].id === id){
+            console.log('entra en el if');
+            return i;
+        }
+    }
+}
 
-    
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    getJSONData(PRODUCTS_AWS_URL + localStorage.getItem("idProduct") ).then(function(resultObj){
+    console.log( 'la URL esssssss: ' );
+    console.log( PRODUCTS_AWS_URL + localStorage.getItem("idProduct") + '.json' );
+
+    getJSONData(PRODUCTS_AWS_URL + localStorage.getItem("idProduct") + '.json' ).then(function(resultObj){
         if (resultObj.status === "ok"){
 
-            showProductInfo(resultObj.data);
+            console.log('resultObj.data es: ');
+            console.log(resultObj.data);
+
+            showProductInfo( resultObj.data );
             productInfoResult = resultObj.data.relatedProducts;
 
             /* Empieza una funcion para el pop OVER */
@@ -486,8 +501,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 });
-
-var imagenPrueba = "https://thispersondoesnotexist.com/image";
 
 function anadeUnDiv (){
     document.getElementById("Descripcion").innerHTML += `

@@ -173,7 +173,7 @@ function saveId(id){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    getJSONData(PRODUCTS_AWS_URL).then(function(resultObj){
+    getJSONData(PRODUCTS_AWS_URL + 'linkProducts.json').then(function(resultObj){
         if (resultObj.status === "ok"){
             ShowProducts(resultObj.data);
             filtrarPorTecleo();

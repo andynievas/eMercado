@@ -18,7 +18,7 @@ var countArticlesToBuy = 0;
 
 
 function showCartInfo (infoCart) {
-    countArticlesToBuy = infoCart.length;
+    if(infoCart.length > 0){countArticlesToBuy = infoCart.length;}else countArticlesToBuy=0;
 
     var contentToAdd = `
 
@@ -222,9 +222,6 @@ function showCartInfo (infoCart) {
     todosLosInputs = document.getElementsByClassName("form-control");
     console.log("Largo del array de artículos: " + infoCart.length + ", en showInfoCart");
     
-    
-
-
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })
@@ -293,15 +290,12 @@ function tarjetaDeCredito(){
                 <input value="" type="text" class="form-control"  id="codigoSeguridad">
             </div>
 
-
             <div class="col-12 m-0">
                 <label class="col m-0 px-0 pt-2"><p>CI del titular de la tarjeta</p></label>
                 <input value="" type="text" class="form-control">
             </div>
         
         </div>
-
-        
         
     </div>`;
 
@@ -446,7 +440,6 @@ function validarCamposCompletos(){
         i++;
     }
 
-    
     return completos;
 }
 
@@ -524,7 +517,6 @@ function alertaDeBorrarArticulo(elTag){
         confirmButtonText: 'Si, quiero borrarlo!'
     }).then((result) => {
         if (result.isConfirmed){
-            removerArticulo(elTag);
             Swal.fire({
                 position: 'top',
                 icon: 'success',
@@ -532,6 +524,8 @@ function alertaDeBorrarArticulo(elTag){
                 showConfirmButton: false,
                 timer: 1000
             });
+            removerArticulo(elTag);
+            updateBadgeElement();
         }else{
             Swal.fire({
                 position: 'top',
