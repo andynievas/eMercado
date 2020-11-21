@@ -66,12 +66,12 @@ function addUserDropdown(){
     </p>
   
     <div class="collapse pt-2" id="collapseExampleV2">
-      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="cart.html" id="miCarritoInHamburgerMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-2 textOscuro" href="my-profile.html"><i class="fas fa-user-circle"></i> Mi perfil</a>
-      <a class="hamburgerMenu btn btn-danger my-0 py-2 textOscuro" href="#" onClick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="cart.html" id="miCarritoInHamburgerMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
+      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="my-profile.html"><i class="fas fa-user-circle"></i> Mi perfil</a>
+      <a class="hamburgerMenu btn btn-danger my-0 py-0 textOscuro" href="#" onClick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
     </div>
 
   </div>`;
