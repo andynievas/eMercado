@@ -157,6 +157,10 @@ a.custom-card:hover {
   color: orange;
 }
 
+.sombraNav{
+  box-shadow: 0px 0px 16px grey;
+}
+
 .responsiveFont{
   font-size: 26px;
 }
@@ -223,7 +227,21 @@ a.custom-card:hover {
     text-align: left;
   }
 }
-
+#hamburgerBtn{
+  background-color: gainsboro;
+  color: black;
+  /* border: 2px black solid; */
+  border: none;
+  border-radius: 4px;
+  padding: 1px 0 0 0;
+  width: 40px;
+  height: 35px;
+  transition: all 0.4s;
+}
+#hamburgerBtn:hover{
+  background-color: black;
+  color: white;
+}
 .hamburgerMenu{
   display: block;
   padding-top: 16px;
@@ -336,11 +354,33 @@ img.center {
   font-weight: bold;
   transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
 }
-
-.btn-eMercado:hover {
-  /* background-color: rgb(71, 137, 163); */
-  background-color: whitesmoke;
+.btn-eMercado-title{
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
   color: rgb(214, 28, 108);
+  margin: 0;
+  padding: 2px 10px 0 10px;
+  border-radius: 40px;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+.btn-eMercado-title:hover{
+  text-decoration: none;
+  /*background-color: rgb(71, 137, 163);*/
+  background-color:  rgb(216, 69, 133);
+  color: whitesmoke;
+  transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
+}
+.btn-eMercado{
+  color: black;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+.btn-eMercado:hover {
+   background-color: rgb(71, 137, 163); 
+  /*background-color:  rgb(214, 28, 108);*/
+  color: whitesmoke;
   transition: color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s ease-in-out,box-shadow .35s ease-in-out;
 }
 

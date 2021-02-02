@@ -48,39 +48,39 @@ function addUserDropdown(){
 
   var navBar = document.getElementsByTagName("nav")[0];
   let htmlToAppend = `
-    <!-- BARRA DE NAVEGACION -->
-    <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
-        <a href="index.html" class="d-none d-md-inline-block" ><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="height: 40px; border-radius: 8px;"> </button> </a>
-        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-        <a class="p-2 d-none d-md-inline-block btn btn-eMercado colorClaro transicionDeColor sombraCaserita" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+  <!-- BARRA DE NAVEGACION -->
+  <div class="container d-flex flex-column flex-md-row h-100" style="align-items: center; position: relative;" id="navBar">
+    <a href="index.html" class="d-none d-md-inline-block btn-eMercado-title " >e-Mercado</a>
+    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+
+    <div class="container m-0 p-0 h-100" id="menuDelCostado" >
+      <p class="d-flex m-0 p-0 h-100" style="align-items: center;" >
+        <button id="hamburgerBtn" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
+          <i class="fas fa-bars" style="font-size: 20px; padding-top: 1px;"></i>
+        </button>
+        <a href="index.html" class="d-block btn-eMercado-title " >e-Mercado</a>
+      </p>
+    
+      <div class="collapse p-2" id="collapseExampleV2" style="background-color: white; width: 100%; position: fixed; left: 0; right: 0;">
+        <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+        <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+        <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+        <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="cart.html" id="miCarritoInHamburgerMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
+        <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="my-profile.html"><i class="fas fa-user-circle"></i> Mi perfil</a>
+        <a class="hamburgerMenu btn btn-danger my-0 py-0 textOscuro" href="#" onClick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      </div>
     </div>
+  </div>
 
-  <div class="container my-1" id="menuDelCostado">
-
-    <p class="d-flex m-0">
-      <button class="btn btn-lg btn-secondary border" style="width: 70px; height: 50px;" type="button" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
-        <i class="fas fa-bars" style="font-size: 30px; padding-top: 1px;"></i>
-      </button>
-      <a href="index.html" class="text-right w-100"><button class="btn m-0 p-0 sombraCaserita" > <img src="img/icons/logo_reduced.png" class=" sombraCaserita" style="width: 70vw; max-width: 250px; height: 50px; border-radius: 8px;"> </button> </a>
-    </p>
-  
-    <div class="collapse pt-2" id="collapseExampleV2">
-      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="cart.html" id="miCarritoInHamburgerMenu"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
-      <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="my-profile.html"><i class="fas fa-user-circle"></i> Mi perfil</a>
-      <a class="hamburgerMenu btn btn-danger my-0 py-0 textOscuro" href="#" onClick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
-    </div>
-
-  </div>`;
+  `;
 
   navBar.innerHTML = htmlToAppend;
 
   htmlToAppend = `<!-- Comienza el boton desplegable -->
-  <div class="dropdown" id="nombreDeUsuario">
-    <button class="btn btn-danger dropdown-toggle alert-info px-1 py-0" type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="dropdown" id="nombreDeUsuario" style="position: absolute; right: 0;" >
+    <button class="btn btn-danger dropdown-toggle alert-info px-1 py-0"  type="button" id="userSession" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Ingresar
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -114,10 +114,19 @@ function addUserDropdown(){
     document.getElementById("navBar").innerHTML += htmlToAppend;
   } ,0);
   
-
-  navBar.background = " rgb(30,70,90);";
-  navBar.style = "background-color: rgb(30,70,90); z-index: 6";
-  navBar.className = "site-header sticky-top py-1";
+  navBar.style = "background-color: rgb(250,250,250); height: 70px; transition: all 0.4s; z-index: 6";
+  navBar.className = "site-header sticky-top sombraNav";
+  // let botonHamburger = document.getElementById("hamburgerBtn");
+  document.addEventListener( "scroll", (e)=>{
+    if( window.scrollY === 0 ){
+      navBar.style.height = "70px";
+      
+    }else{
+      // navBar.classList.remove( "sombraNav" );
+      navBar.style.height = "40px";
+      
+    }
+  });
 
 }
 
