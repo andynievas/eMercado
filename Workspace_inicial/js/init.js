@@ -50,20 +50,20 @@ function addUserDropdown(){
   let htmlToAppend = `
   <!-- BARRA DE NAVEGACION -->
   <div class="container d-flex flex-column flex-md-row h-100" style="align-items: center; position: relative;" id="navBar">
-    <a href="index.html" class="d-none d-md-inline-block btn-eMercado-title " >e-Mercado</a>
-    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
-    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="products.html"><i class="fas fa-th-list"></i> Productos</a>
-    <a class=" d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
+    <a href="index.html" class="d-none d-md-flex px-4 btn-eMercado-title " >e-Mercado</a>
+    <a class="d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
+    <a class="d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="products.html"><i class="fas fa-th-list"></i> Productos</a>
+    <a class="d-none d-lg-inline-block btn btn-eMercado colorClaro transicionDeColor " href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
 
     <div class="container m-0 p-0 h-100" id="menuDelCostado" >
-      <p class="d-flex m-0 p-0 h-100" style="align-items: center;" >
+      <div class="d-flex m-0 p-0 h-100" style="align-items: center;" >
         <button id="hamburgerBtn" data-toggle="collapse" data-target="#collapseExampleV2" aria-expanded="false" aria-controls="collapseExampleV2">
           <i class="fas fa-bars" style="font-size: 20px; padding-top: 1px;"></i>
         </button>
-        <a href="index.html" class="d-block btn-eMercado-title " >e-Mercado</a>
-      </p>
-    
-      <div class="collapse p-2" id="collapseExampleV2" style="background-color: white; width: 100%; position: fixed; left: 0; right: 0;">
+        <a href="index.html" class="btn-eMercado-title" id="inHamburger" >e-Mercado</a>
+      </div>
+
+      <div class="collapse p-2" id="collapseExampleV2">
         <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="categories.html"><i class="fas fa-th-large"></i> Categorías</a>
         <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="products.html"><i class="fas fa-th-list"></i> Productos</a>
         <a class="hamburgerMenu btn btn-dark my-0 py-0 textOscuro" href="sell.html"><i class="fas fa-dollar-sign"></i> Vender</a>
@@ -84,7 +84,7 @@ function addUserDropdown(){
       Ingresar
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-      
+
       <a class="dropdown-item p-0 d-none d-md-inline-block " href="cart.html">
         <div class=" py-0 px-3 d-none d-md-inline-block btn btn-block btn-eMercado transicionDeColor text-left sombraCaserita" id="miCarritoInDropDown" >
           <span class="fas fa-shopping-cart text-right mr-1" style="width: 25px; font-size: 21px;"></span>
@@ -105,7 +105,7 @@ function addUserDropdown(){
           <span style="width: 80%; font-size: 21px;" >Cerrar sesión</span>
         </div>
       </a>
-      
+
     </div>
   </div>
   <!-- Aqui termina el boton desplegable -->` ;
@@ -113,18 +113,20 @@ function addUserDropdown(){
   setTimeout( ()=>{
     document.getElementById("navBar").innerHTML += htmlToAppend;
   } ,0);
-  
-  navBar.style = "background-color: rgb(250,250,250); height: 70px; transition: all 0.4s; z-index: 6";
-  navBar.className = "site-header sticky-top sombraNav";
-  // let botonHamburger = document.getElementById("hamburgerBtn");
+
+  navBar.className = "site-header sticky-top navBar";
+  let imgProfile = "";
+
   document.addEventListener( "scroll", (e)=>{
+    imgProfile = document.getElementById("imgProfileInDropDown");
+
     if( window.scrollY === 0 ){
       navBar.style.height = "70px";
-      
+      imgProfile.style.width = "45px";
     }else{
       // navBar.classList.remove( "sombraNav" );
       navBar.style.height = "40px";
-      
+      imgProfile.style.width = "30px";
     }
   });
 
@@ -153,12 +155,12 @@ function logOut_Animations(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  
+
   var finalUser = localStorage.getItem('user');
 
   if(finalUser !== null){
 
-    
+
     // El siguiente 'if' verifica si el correo ingresado contiene '.com' y lo quita
     // if( finalUser.includes('.com') ){
     //   finalUser = finalUser.slice(0,finalUser.length-4) ;
@@ -176,12 +178,12 @@ document.addEventListener("DOMContentLoaded", function(e){
         finalUser = finalUser.slice(0, 9) + '...'; /* + finalUser.slice(finalUser.length-6, finalUser.length); //Esto es para concatenarle la otra parte del correo (osea la parte del @)*/
       }
     }
-  
+
     if( localStorage.getItem('user')!=null ){
       setTimeout(  ()=> {
         let currentUser = document.getElementById("userSession"); //console.log(currentUser);
         if(currentUser){
-        currentUser.innerHTML = finalUser + `<img id="imgProfileInDropDown" src="${pintarImgProfile()}" alt="imgProfile" class="ml-2" style="width: 38px; border-radius: 50%; margin-top: 1px; margin-bottom: 1px;">
+        currentUser.innerHTML = finalUser + `<img class="imgProfile" id="imgProfileInDropDown" src="${pintarImgProfile()}" alt="imgProfile" class="ml-2">
         `;
       }
     }, 100);
@@ -192,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   var head = document.getElementsByTagName("head");
   head[0].innerHTML += `
-  <link rel="shortcut icon" href="img/icons/e-Logo.png">` ; 
+  <link rel="shortcut icon" href="img/icons/e-Logo.png">` ;
 
 });
 
@@ -208,7 +210,5 @@ function cerrarSesion(){
   if(localStorage.getItem("userProfile") ){localStorage.removeItem("userProfile");}
   if( localStorage.getItem("imgProfile") ){localStorage.removeItem("imgProfile");}
   location.replace("index.html");
-    
+
 }
-
-

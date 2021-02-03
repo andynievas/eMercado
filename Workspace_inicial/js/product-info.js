@@ -18,12 +18,12 @@ function ponerNombre(product){
 
     var barNavv =  document.getElementsByTagName("nav");
     let htmlContentToAppend = `
-    <div class="cambiarFondo" id="titulo" style="height: 30px;">
+    <div class="cambiarFondo" id="titulo" style="height: 30px; position: relative; bottom: 4px;">
         <div class=" p-0 site-header  alert-info" style="height: 35px; ">
         <h3 class="m-1 text-center" style="font-weight: bold;">` + product.name + `</h3>
         </div>
     </div>` ;
-    
+
     barNavv[0].innerHTML += htmlContentToAppend;
 
 }
@@ -49,9 +49,9 @@ function ponerBotonCollapsable(){
 
 function ponerImagenes(product){
     var htmlContentToAppend = `
-    
+
         <div class="row py-1 my-1 mx-0"> `;
-        
+
             for(let h=0; h < product.images.length; h++ ){
                 htmlContentToAppend += `
                 <div class="col p-1">
@@ -68,10 +68,10 @@ function ponerPrecio(product){
     let htmlContentToAppend = `
     <h5 class="mx-0 my-1 responsiveAlign responsiveAlignLeft" style="width: 100%">Categoría: ` + product.category + `</h5>`;
     // <div class="pt-2 d-flex cambiarFondo border-top ">
-            
+
     document.getElementById("categoria").innerHTML += htmlContentToAppend;
-    
-    
+
+
     htmlContentToAppend = `
         <a class="text-center responsiveFont d-block mx-4 p-0" title="El costo del producto puede variar según la ubicación del envío." data-toggle="popover" data-trigger="hover" data-content="" style="font-weight: bold; margin: auto; z-index: 1;">Precio: ` + product.currency + ` - `  + product.cost + `</a>
         `;
@@ -90,14 +90,14 @@ function ponerDescripcion(product){
 
     let htmlContentToAppend = `
         <div class="cambiarFondo border-top my-3">
-            
+
             <div class=" justify-content-between">
                 <h4 class="py-2 " style="color: black;">Descripción del artículo: </h4>
                 <h6>  ` + product.description + `</h6>
             </div>
-                    
+
         </div>` ;
-    
+
     document.getElementById("Descripcion").innerHTML += htmlContentToAppend;
 
 }
@@ -105,7 +105,7 @@ function ponerDescripcion(product){
 function addCardInGroup(array, posArray){
 
     let cardToApend = ` `;
-        
+
         cardToApend = `
         <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3 px-0 mb-2">
             <div class="card-body px-4">
@@ -117,7 +117,7 @@ function addCardInGroup(array, posArray){
                 <small class="text-muted">Last updated ` + array[posArray].dateTime + `</small>
             </div>
         </div>`;
-        
+
     document.getElementById("cardColumn").innerHTML += cardToApend;
 }
 
@@ -133,7 +133,7 @@ function addCardColumn(largo, array){
     document.getElementById("comentariosYpuntuacion").innerHTML += htmlToApend;
 
     for(let u=0; u<largo; u++){
-        
+
         addCardInGroup(array, u);
     }
 }
@@ -242,7 +242,7 @@ function validarSiComentarioVacio(){
         arrayDelNuevoComentario[0] = {"user": localStorage.getItem("user") , "description": comentarioToAppend.value, "dateTime": hoy.getFullYear() + '-' + ( hoy.getMonth() +1 ) + '-' + hoy.getDate() + ' ' + hoy.getHours() + ':' + hoy.getMinutes(), "score": score };
 
         addCardColumn(1, arrayDelNuevoComentario);  // Le paso el valor 1 como parametro porque es el largo del array con los detalles del nuevo comentario
-        
+
         comentarioToAppend.value = "";
 
         ponerImgUserInComment();
@@ -267,10 +267,10 @@ function validarSiComentarioVacio(){
 }
 
 function addNewUserComentStructure(){
-    
+
     //  Añadir modal de Bootstrap para realizar un nuevo comentario
     let htmlToApend = `
-        <!-- Comienza el modal -->    
+        <!-- Comienza el modal -->
 
       <!-- Termina el modal -->`;//data-dismiss="modal"
 
@@ -289,22 +289,22 @@ function saveId(id){
 
 function ponerInfoDeRelated(arrayDeProducts){  //  Incluir nombre e imagen del producto relacionado
     var agregarARelated = "";
-    
+
     for(let n=0; n<productInfoResult.length; n++){
-        agregarARelated += 
-        
+        agregarARelated +=
+
         `<div class="m-1" style="width: 160px; display: inline-block;">
             <a href="product-info.html" id="` + arrayDeProducts[ productInfoResult[n] ].id + `" onclick="saveId(`+ arrayDeProducts[ productInfoResult[n] ].id +`)" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
                 <img style="width: 100%;" src=" ` + arrayDeProducts[ productInfoResult[n]].imgSrc + ` ">
                 <h6 class="p-2 m-0" style="font-size: 20px;">`
-                    + arrayDeProducts[ productInfoResult[n]].name + 
+                    + arrayDeProducts[ productInfoResult[n]].name +
                 `</h6>
                 <h6>
                     <span class=" p-2 m-0" style="font-size: 15px;">` + arrayDeProducts[ productInfoResult[n]].currency+` - `+arrayDeProducts[ productInfoResult[n]].cost + `</span>
                 </h6>
             </a>
         </div>`;
-        
+
     // arrayDeProducts[productInfoResult[n]]
 
     }
@@ -315,23 +315,23 @@ function ponerProductosRelacionados(arrayDeProducts, arrProductsRel){    //  Inc
     console.log(arrayDeProducts); // El array completo con todos los autos
     console.log(arrProductsRel); // El array con los autos relacionados
     var divToAppend = `
-    
+
     <div class="container p-0" id="productsRelacionados" ></div>
-    
+
     `;
 
     document.getElementById("Related").innerHTML += divToAppend;
 
     var agregarARelated = "";
-    
+
     for(let n=0; n<arrProductsRel.length; n++){
-        agregarARelated += 
-        
+        agregarARelated +=
+
         `<div class="m-1" style="width: 160px; display: inline-block;">
             <a href="product-info.html" id="` + arrayDeProducts[arrProductsRel[n]].id + `" onclick="saveId(`+ arrayDeProducts[arrProductsRel[n]].id +`)" class="card p-1 list-group-item-action shadow col-12" style="min-width: 40px; display: inline-block;">
                 <img style="width: 100%;" src=" ` + arrayDeProducts[arrProductsRel[n]].imgSrc + ` ">
                 <h6 class="p-2 m-0" style="font-size: 20px;">`
-                    + arrayDeProducts[arrProductsRel[n]].name + 
+                    + arrayDeProducts[arrProductsRel[n]].name +
                 `</h6>
                 <h6>
                     <span class=" p-2 m-0" style="font-size: 15px;">` + arrayDeProducts[arrProductsRel[n]].currency+` - `+arrayDeProducts[arrProductsRel[n]].cost + `</span>
@@ -345,7 +345,7 @@ function ponerProductosRelacionados(arrayDeProducts, arrProductsRel){    //  Inc
 function ponerComentarios(largo, resultComentarios){   // y tambien las estrellas
 
     addCardColumn(largo, resultComentarios);
-    
+
 }
 
 function showProductInfo(product){
@@ -357,7 +357,7 @@ function showProductInfo(product){
     let carrucel ="";
 
     carrucel = `
-    
+
     <div class="cambiarFondo" style="width: 100%; border-radius: 10px; z-index: 2;">
 
         <div id="carouselExampleControls" class=" carousel slide" data-ride="carousel" data-interval="0">
@@ -365,7 +365,7 @@ function showProductInfo(product){
                 <div class="carousel-item active">
                     <img class="d-block w-100" style="border-radius: 6px;" src=" ` + product.images[0] + ` " alt="First slide">
                 </div>`;
-        
+
             for(let j=1; j<product.images.length; j++){
                 carrucel += `
                 <div class="carousel-item">
@@ -373,7 +373,7 @@ function showProductInfo(product){
                 </div>`;
             }
         // podria poner un ELSE para que muestre una foto que diga que no hay mas fotos, o que luego se publicaran mas fotos
-                
+
     carrucel +=`
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -384,8 +384,8 @@ function showProductInfo(product){
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div> 
-    
+        </div>
+
     </div>
     `;
 
@@ -398,7 +398,7 @@ function showProductInfo(product){
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObjComentarios){
         if (resultObjComentarios.status === "ok"){
             const largo = resultObjComentarios.data.length;
-            
+
             var arrayDeScores = [];
             for(let arr=0; arr<largo; arr++){
                 arrayDeScores[arr] = resultObjComentarios.data[arr].score;
@@ -420,12 +420,12 @@ function showProductInfo(product){
 
 function addPopOver(){
     let paraAnadir= `
-    
+
     <h3>Popover Example</h3>
     <a href="#" autofocus="autofocus" id="popOver" title="Dismissible popover" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Click me</a>
-    
+
     `;
-    
+
     document.getElementById("addPopOver").innerHTML += paraAnadir;
 }
 
@@ -477,21 +477,21 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             setTimeout(function() {
                 console.log("Esperar...");
-          
+
                 $(document).ready(function(){
                   $('[data-toggle="popover"]').popover('show');
               });
-        
+
             //   userImage.load("img/cat9.jpg");
-          
+
               }, 1000);
-        
+
               setTimeout( () => {
                 //   .popover('disable');
                   $(document).ready(function(){
                     $('[data-toggle="popover"]').popover('hide');
                 });
-        
+
               }, 5000);
 
             /* Termina la funcion */
